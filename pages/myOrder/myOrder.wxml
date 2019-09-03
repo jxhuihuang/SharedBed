@@ -1,0 +1,19 @@
+<!--pages/myOrder/myOrder.wxml-->
+
+<view class="containers" >
+    <view class="list">
+        <block wx:for="{{orderList}}" wx:key="orderList_{{index}}">
+                <view class="list-box order-box"  data-link="">
+                    <view class="list-header">{{item.dateTime}}</view>
+                    <view class="list-main">
+                        <text class="myicon time-icon"></text>
+                        <text class="list-title">使用 {{item.userTime}}分钟</text>
+                    </view>
+                    <view class="list-right ">
+                        {{item.spendAmount}} 元
+                    </view>
+                    <view class="list-footer">{{item.state}}</view>
+                </view>
+        </block>
+    </view>
+</view>

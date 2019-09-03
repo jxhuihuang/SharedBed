@@ -1,0 +1,255 @@
+.agreement {
+    overflow: hidden;
+    margin: 10px 0 20px;
+}
+
+.agreement .checkbox-wrap {
+    display: inline-block;
+    transform: scale(0.5);
+}
+
+.agreement .agreement-text {
+    display: inline-block;
+    font-size: 12px;
+}
+
+.yellow-theme {
+    font-size: 14px;
+    overflow: hidden;
+}
+
+.yellow-theme-text {
+    font-size: 14px;
+    background-color: #fed52f;
+}
+
+.captcha {
+    font-size: 14px;
+    background-color: #fed52f;
+}
+
+.captcha.disable {
+    background-color: #ebebeb;
+    color: #aaa;
+}
+
+.captch-msg {
+    color: red;
+    margin-left: 15rpx;
+}
+
+.captcha-container {
+    width: 80%;
+    background: #fff;
+    border-radius: 5px;
+    margin: auto;
+}
+
+.h-center {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,0);
+}
+
+.v-center {
+    position: absolute;
+    top: 50%;
+    transform: translate(0,-50%);
+}
+
+.vh-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.err-msg {
+    color: #D50000;
+    text-align: center;
+    font-size: 14px;
+}
+
+.login-banner {
+    width: 600rpx;
+    height: 700rpx;
+    margin-top: 60rpx;
+    margin-bottom: 90rpx;
+}
+
+.wx-login {
+    width: 600rpx;
+    height: 90rpx;
+    border-radius: 100rpx;
+    overflow: hidden;
+}
+
+.ofo-common-btn {
+    border: none;
+    width: 600rpx;
+    height: 90rpx;
+    line-height: 90rpx;
+    border-radius: 100rpx;
+}
+
+.phone-login {
+    width: 210rpx;
+    height: 28rpx;
+    line-height: 28rpx;
+    margin: 50rpx auto 0;
+    font-size: 28rpx;
+    overflow: hidden;
+    color: rgba(136,136,136,1);
+}
+
+.button-hover {
+    background-color: red;
+}
+
+.banner-text {
+    font-size: 64rpx;
+    height: 64rpx;
+    line-height: 64rpx;
+    font-family: PingFangSC-Semibold;
+    color: rgba(51,51,51,1);
+    margin-top: 80rpx;
+}
+
+.common-input {
+    font-size: 36rpx;
+}
+
+.tel-item {
+    position: relative;
+    width: 100%;
+}
+
+.tel-input {
+    border-bottom: 2rpx solid #EAEAEA;
+    background: transparent;
+    min-height: 70rpx;
+    line-height: 70rpx;
+    height: 70rpx;
+}
+
+.special-input {
+    border-bottom: 0rpx solid #EAEAEA;
+}
+
+.captcha-input {
+    background: transparent;
+    width: 662rpx;
+    min-height: 70rpx;
+    line-height: 70rpx;
+    height: 70rpx;
+}
+
+.confirm-btn {
+    font-size: 36rpx;
+    border: none;
+    height: 90rpx;
+    line-height: 90rpx;
+    border-radius: 100rpx;
+    width: 600rpx;
+    margin: 0 auto;
+}
+
+.input-number {
+    border-bottom: 1px solid silver;
+    margin-right: 20rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    flex: 1;
+    text-align: center;
+}
+
+.no-placeholder {
+    position: absolute;
+    width: 1500rpx;
+    left: 5rpx;
+    top: 5rpx;
+    margin-left: -600rpx;
+}
+
+.placeholder-center {
+    text-align: center;
+}
+
+.phoneCaptcha-btn,.left-seconds {
+    position: absolute;
+    right: 0;
+    top: 0;
+    line-height: 70rpx;
+    width: 220rpx;
+    height: 70rpx;
+    border-radius: 100rpx;
+    border: none;
+    text-align: center;
+}
+
+.phoneCaptcha-btn {
+    z-index: 2;
+}
+
+.left-seconds {
+    width: 100rpx;
+    background: none;
+}
+
+.img-captcha {
+    position: relative;
+    margin-top: 66rpx;
+}
+
+.err-inner {
+    width: 270rpx;
+    height: 70rpx;
+    margin-top: -15rpx;
+}
+
+.err-wrapper {
+    text-align: center;
+    overflow: hidden;
+    width: 270rpx;
+    height: 70rpx;
+    position: relative;
+    background-color: #f1f1f1;
+}
+
+.err-img {
+    float: left;
+    width: 200rpx;
+    height: 70rpx;
+}
+
+.btn-wrapper {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    width: 70rpx;
+    height: 70rpx;
+    text-align: center;
+    line-height: 70rpx;
+    box-sizing: border-box;
+}
+
+.icon-refresh {
+    width: 30rpx;
+    height: 35rpx;
+    text-align: center;
+    margin-top: 15rpx;
+}
+
+.bd1 {
+    background-color: #ddd;
+    border: 2rpx solid #f1f1f1;
+}
+
+.icon-error {
+    width: 28rpx;
+    height: 28rpx;
+    text-align: center;
+    margin-top: 12rpx;
+    box-sizing: border-box;
+}

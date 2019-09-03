@@ -1,0 +1,50 @@
+<import src="../../utils/wxParse/wxParse.wxml"/>
+<!--pages/purchaseCard/purchaseCard.wxml-->
+<view class="containers " >
+    <view class="main {{footerShow?'margin_footer':''}}">
+        <view class="card_head">
+            <view class="card_info">
+               <view class="card_name">{{cardInfo.name}}</view> 
+               <view class="card_des">{{cardInfo.des}}</view> 
+            </view>
+            <view class="card-img"><image src="{{cardInfo.image}}" mode="widthFix"></image></view>
+        </view>
+        <view class="card-list">
+                <view class=" {{selectPrice==item.price?'list-box mgb_4 current':'list-box mgb_4'}}"  bindtap="selectCard" data-price="{{item.price}}" wx:for="{{cardInfo.list}}" wx:key="cardInfo_{{index}}">
+                    <view class="list-main">
+                        <view class="names">
+                           <text class="title">{{item.title}}</text>   <text class="label" wx:if="{{item.discount!=''?true:false}}">{{item.discount}}</text> 
+                        </view>
+                        <view class="des">
+                                {{item.des}}  
+                        </view>
+                    </view>
+                    <view class="list-right ">
+                            <view class="price">
+                                ￥{{item.price}}  
+                            </view>
+                            <view class="original_rice" wx:if="{{item.original_rice && item.original_rice!=item.price?true:false}}">
+                                ￥{{item.original_rice}}  
+                            </view>
+                    </view>
+                </view>
+        </view>
+        <view class="card-des-mian">
+            <view class="card-des-box" wx:for="{{noticeData}}" wx:key="card-des-box_{{index}}">
+                <view class="card-des-title">{{item.title}}</view>
+                <view class="card-des-content">
+                    <template is="wxParse" data="{{wxParseData:item.newcontent.nodes}}"/>
+                </view>
+            </view>
+        </view>
+    </view>
+   
+    <view class="footer" wx:if="{{footerShow}}">
+        <view><text class="price">{{selectPrice}}</text>元</view>
+        <view>  
+            <button bindtap="ofoDispatch" class="confirm-btn" >
+                提交
+            </button>
+        </view>
+    </view>
+</view>

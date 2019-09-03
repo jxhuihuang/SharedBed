@@ -1,0 +1,33 @@
+<!--pages/aboutUs/aboutUs.wxml-->
+<view class="container">
+    <view class="aboutUs-main">
+        <view class="headers">
+            <view class="headers-icon">
+                <image src="{{programIcon}}" mode="widthFix"></image>
+            </view>
+            <view class="program-title">{{program_title}}</view>
+            <view class="program-des" wx:if="{{program_des && program_des!=''?true:false}}">
+                    {{program_des}}
+            </view>
+        </view>
+        <view class="list">
+            <view class="list-box showright">
+                <view class="list-main">
+                    <text class="list-title">客服电话</text>
+                </view>
+                <view class="list-right">
+                    <text class="right-des">{{customer_phone}}</text>
+                </view>
+            </view>
+            <view class="list-box showright">
+                <view class="list-main">
+                    <text class="list-title">电子邮箱</text>
+                </view>
+                <view class="list-right">
+                    <text class="right-des">{{customer_email}}</text>
+                </view>
+            </view>
+        </view>
+
+    </view>
+</view>

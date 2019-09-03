@@ -1,0 +1,19 @@
+<view class="container">
+        <view class="main">
+            <view class="balance">账户余额： {{balance}}元</view>
+            <view class="recharge-content">
+                <view class="recharge-tle">
+                    充值金额
+                </view>
+                <view class="recharge-warp">
+                    <view class="{{item.amount==seletAmount?'recharge-box current':'recharge-box'}}" wx:for="{{rechargeData}}" bindtap="selectAmount" data-amount="{{item.amount}}" wx:key="amount"><text>充{{item.amount}}元</text></view>
+                </view>
+            </view>
+        </view>
+        <view class="recharge-bottom">
+            <button bindtap="" class="recharge-btn">
+                立即充值
+            </button>
+            <view class="recharge-des">点击立即充值，即表示你已经同意 <text class="protocol" bindtap="tolink" data-link="">《充值活动协议》</text></view>
+        </view>
+</view>

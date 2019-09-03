@@ -1,0 +1,21 @@
+
+<template name="alertModals" >
+    <view class="modal-container">
+        <view bindtap="closeModal" class="modal-background"></view>
+        <view class="modal-content v-layout vh-center " style="align-items: center; width: 560rpx;">
+            <!-- <cover-image class="myIconfont icon-position"></cover-image> -->
+            <image class="model-icon" src="{{icon}}"  wx:if="{{icon}}"></image>
+            <text class="redpacket-modal-desc">
+                {{title}}
+            </text>
+
+            <view wx:if="{{!open_type}}" bindtap="{{bindtap?bindtap:''}}" class="yellow-btn redpacket-modal-btn" data-action="" data-itemtype="" data-redirecturl="">
+                {{confirmBtn}}
+            </view>
+            
+            <view wx:if="{{open_type && open_type=='getPhoneNumber'}}"     data-action="" data-itemtype="" data-redirecturl="">
+                <button  open-type="getPhoneNumber" bindgetphonenumber="wxgetPhoneNumber" class="yellow-btn redpacket-modal-btn">{{confirmBtn}}</button>
+            </view>
+        </view>
+    </view>
+</template>

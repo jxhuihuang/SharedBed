@@ -1,0 +1,33 @@
+/* pages/billDetail/billDetail.wxss */
+
+.detail-box{
+    border-bottom: 1px solid #EEE;
+    min-height: 160rpx;
+}
+.list-main{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+.list-title{
+    font-size: 32rpx;
+}
+.list-date{
+    font-size: 26rpx;
+    color: #888;
+    margin-top: 10rpx;
+}
+.list-right{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.amount{
+    font-size: 32rpx;
+    color: #F00;
+}
+
+.types{
+    margin-top: 10rpx;
+}

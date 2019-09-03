@@ -1,0 +1,182 @@
+.container {
+    background: #fff;
+    justify-content: flex-start;
+    /* text-align: center; */
+    width: 100vw;
+    padding: 0 20px
+}
+.auth-info-text {
+    font-size: 30rpx;
+    color: #333;
+    margin: 20rpx 0;
+    font-weight: 600;
+    line-height: 52rpx;
+    height: 56rpx;
+}
+.input-section{
+    position: relative;
+}
+.manual-input{
+    background: #f5f6f8;
+    height: 50px;
+    padding: 0 40rpx;
+}
+.scanUnlock-main{
+    position:absolute;
+    right: 10rpx;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 36px;
+    height: 50px;
+    display: flex;
+    align-items:center;
+    z-index: 30;
+}
+.scanUnlock-main image{
+    width: 24px;
+    height: 24px;
+}
+.malf-section{
+    display: block;
+    height: auto;
+    /* overflow: visible; */
+}
+
+.malf-section  .malf-box{
+    display: inline-block;
+    vertical-align: top;
+    width: 25%;
+    margin-bottom: 40rpx;
+}
+.scanUnlock-img{
+    display: flex;
+    width:120rpx;
+    height: 120rpx;
+    border: 1px solid #EDEDED;
+    border-radius: 50%;
+    align-items:center; 
+    justify-content:center;
+    margin: auto;
+}
+.malf-section  .malf-box.current .scanUnlock-img{
+    border-color: #107bfd;
+    background: #fffaf7;
+}
+.scanUnlock-img image{
+    max-width: 44px;
+}
+
+.scanUnlock-text{
+    font-size: 14px;
+    padding-top: 40rpx;
+    display: block;
+    color: #666;
+    padding-bottom: 40rpx;
+    text-align: center;
+}
+
+.textarea-section{
+    margin-top: 20px;
+}
+
+/***相机**/
+.carma-wrap{
+    display: flex;
+    width: 100%;
+    height: 115rpx;
+}
+.carma-box{
+    position: relative;
+    width:115rpx;
+    height: 115rpx;
+    
+    margin-right: 20rpx;
+}
+.carma-choose{
+    border: 1px dotted #DDD;
+}
+
+.img-box{
+    width:115rpx;
+    height: 115rpx;
+    overflow: hidden;
+    display: flex;
+    align-items:center;
+    justify-content:center;
+}
+.carma-icons{
+    width: 50rpx;
+}
+.carmaImgMain{
+    position: relative;
+    width:115rpx;
+    height: 115rpx;
+    margin-right: 10px;
+}
+.carmaClose{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #f94410;
+    top: -5px;
+    right: -5px;
+    border-radius: 50%;
+    box-shadow: 2px -2px 2px 4px #FFF;
+}
+.carmaClose::before{
+    position: absolute;
+    content: "";
+    width: 1px;
+    height: 10px;
+    background: #FFF;
+    left: 0;
+    right: 0;
+    top:0;
+    bottom: 0;
+    margin: auto;
+    transform: rotate(45deg)
+}
+.carmaClose::after{
+    position: absolute;
+    content: "";
+    width: 1px;
+    height: 10px;
+    background: #FFF;
+    left: 0;
+    right: 0;
+    top:0;
+    bottom: 0;
+    margin: auto;
+    transform: rotate(-45deg)
+}
+.textarea-section{
+    margin-top: 30px;
+    position: relative;
+    background: #f4f5f7;
+    min-height: 100px;
+}
+.textarea-section  textarea{
+   font-size: 14px;
+   height: inherit;
+   padding: 15px;
+   color: #888;
+}
+.textarea-statistics{
+    position: absolute;
+    color: #888;
+    font-size: 12px;
+    bottom: 5px;
+    right: 10px;  
+}
+
+.confirm-btn{
+    display: flex;
+    width: 100%;
+    height: 50px;
+    background: #c2c5ca;
+    color: #FFF;
+    font-size: 16px;
+    align-items:center;
+    justify-content:center;
+}

@@ -1,0 +1,64 @@
+<!-- <import src="../bike/common.wxml"></import>
+<import src="../common/confirmModal.wxml"></import>
+<import src="../common/alertModal.wxml"></import> -->
+<view>
+    <view class="container" wx:if="{{!manuToRide}}">
+        <view class="nu-img-container">
+            <image class="nu-img" src="{{pageBanner}}"></image>
+        </view>
+        <view class="nu-title">
+            {{pageTitle}}
+        </view>
+        <view class="nu-desc">
+            {{pageSubtitle}}
+        </view>
+        <view class="prince-info">
+            <text>计费说明: {{authtype}}元/小时</text>
+        </view>
+        <form reportSubmit bindsubmit="scanUnlock">
+            <button class="scan-btn btn" formType="submit" style="flex: 0 0 auto;">
+                {{scanToRideBtn.text}}
+            </button>
+        </form>
+        <form reportSubmit bindsubmit="showManuUnlock">
+            <button class="manual-btn" formType="submit">
+                {{manuToRideBtn.text}}
+            </button>
+        </form>
+    </view>
+    
+    <view class="manual" wx:if="{{manuToRide}}">
+        <view class="manual-title">输入车牌号</view>
+        <view class="manual-spec">获取解锁码</view>
+        <view class="manual-form">
+            <view>
+                <input bindfocus="onFocus" bindinput="inputPlate" class="manual-input" focus="{{true}}" maxlength="8" placeholder="请输入车牌号" type="number"></input>
+            </view>
+        </view>
+    </view>
+    <view class="manual-btn-gap" wx:if="{{manuToRide}}">
+        <form reportSubmit bindsubmit="ofoDispatch" data-action="{{ridingBtn.action}}" data-event_id="{{ridingBtn.event_id}}" data-event_name="{{ridingBtn.event_name}}" data-itemtype="{{ridingBtn.type}}" wx:if="{{canClick}}">
+            <button class="active" formType="submit">
+                {{ridingBtn.text}}
+            </button>
+        </form>
+        <button wx:else>
+            {{ridingBtn.text}}
+        </button>
+    </view>
+    <view wx:if="{{showAlert}}">
+        <view class="lock-mask">
+            <view wx:if="{{carnoError}}">
+                <template is="carnoError" data></template>
+            </view>
+            <view wx:if="{{forceOpen}}">
+                <template is="forceOpen" data></template>
+            </view>
+            <view wx:if="{{forceLock}}">
+                <template is="forceLock" data></template>
+            </view>
+        </view>
+    </view>
+    <template is="confirmModal" data="{{...confirmModalData}}" wx:if="{{showConfirmModal}}"></template>
+    <template is="ofoAlertModal" data="{{...alertModalData}}" wx:if="{{showAlertModal}}"></template>
+</view>

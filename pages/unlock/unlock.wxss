@@ -1,0 +1,542 @@
+page {
+    background-color: #fff;
+}
+
+.container {
+    padding: 1px 0px;
+    background: #fff;
+    display: block;
+    justify-content: flex-start;
+    text-align: center;
+    overflow: hidden;
+}
+
+.state-container {
+    color: rgb(42,200,179);
+    margin-top: 10px;
+}
+
+.unlock-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    background: #fff;
+    box-shadow: 0 0 12px #ddd;
+    padding-bottom: 16px;
+}
+
+.banner {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.banner image {
+    display: block;
+    width: 288px;
+    height: 135px;
+}
+
+.qrcode-scan-entry {
+    width: 48px;
+    height: 48px;
+    background-color: #f7f7f7;
+    border-radius: 50%;
+    right: 3px;
+    position: absolute;
+    top: 3px;
+}
+
+.qrcode-scan-entry::before {
+    content: '';
+    display: block;
+    width: 48px;
+    height: 28px;
+    background-size: 17px!important;
+    background-repeat: no-repeat;
+    background-position: center bottom!important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg' width%3D'26' height%3D'25' viewBox%3D'0 0 26 25' version%3D'1.1'%3E%3Cg stroke%3D'none' stroke-width%3D'1' fill%3D'none' fill-rule%3D'evenodd'%3E%3Cg transform%3D'translate(-647.000000%2C -186.000000)' fill%3D'%2340320D'%3E%3Cg transform%3D'translate(615.000000%2C 167.000000)'%3E%3Cpath d%3D'M33.3 26.5L34.1 26.5C34.3 26.5 34.5 26.3 34.5 26L34.5 20.7 40 20.7C40.2 20.7 40.4 20.5 40.4 20.2L40.4 19.4C40.4 19.2 40.2 19 40 19L34.1 19 33.3 19C33 19 32.8 19.2 32.8 19.4L32.8 20.2 32.8 26C32.8 26.3 33 26.5 33.3 26.5ZM40 41.4L34.5 41.4 34.5 36C34.5 35.8 34.3 35.6 34.1 35.6L33.3 35.6C33 35.6 32.8 35.8 32.8 36L32.8 41.8 32.8 42.6C32.8 42.8 33 43 33.3 43L34.1 43 40 43C40.2 43 40.4 42.8 40.4 42.6L40.4 41.8C40.4 41.6 40.2 41.4 40 41.4ZM50 20.7L55.5 20.7 55.5 26C55.5 26.3 55.7 26.5 55.9 26.5L56.7 26.5C57 26.5 57.2 26.3 57.2 26L57.2 20.2 57.2 19.4C57.2 19.2 57 19 56.7 19L55.9 19 50 19C49.8 19 49.6 19.2 49.6 19.4L49.6 20.2C49.6 20.5 49.8 20.7 50 20.7ZM56.7 35.6L55.9 35.6C55.7 35.6 55.5 35.8 55.5 36L55.5 41.4 50 41.4C49.8 41.4 49.6 41.6 49.6 41.8L49.6 42.6C49.6 42.8 49.8 43 50 43L55.9 43 56.7 43C57 43 57.2 42.8 57.2 42.6L57.2 41.8 57.2 36C57.2 35.8 57 35.6 56.7 35.6ZM57.6 30.2L32.4 30.2C32.2 30.2 32 30.4 32 30.6L32 31.4C32 31.7 32.2 31.8 32.4 31.8L57.6 31.8C57.8 31.8 58 31.7 58 31.4L58 30.6C58 30.4 57.8 30.2 57.6 30.2Z'%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+}
+
+.qrcode-scan-entry::after {
+    content: '扫码用车';
+    display: block;
+    width: 48px;
+    height: 20px;
+    text-align: center;
+    color: #333;
+    font-size: 10px;
+    transform: scale(0.7);
+}
+
+.charge {
+    font-size: 12px;
+    color: #40320d;
+    background: #f7f7f7;
+    border-radius: 100px;
+    padding: 5px 15px;
+    margin-bottom: 10px;
+}
+
+.form-content {
+    display: flex;
+    padding: 0 16px;
+    flex-flow: row no-wrap;
+    justify-content: space-between;
+}
+
+.input-num-wrapper {
+    height: 58px;
+    border: 1px solid #fed52f;
+    flex: 1;
+}
+
+.form-sub {
+    width: 60px;
+    height: 60px;
+    margin-left: 10px;
+}
+
+.form-sub view {
+    width: 100%;
+    height: 100%;
+}
+
+.form-sub image {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.warnMsg {
+    color: #f00;
+    font-size: 14px;
+    text-align: center;
+}
+
+.hint {
+    font-size: 14px;
+    text-align: center;
+    color: #605134;
+    margin-top: 10px;
+}
+
+.input-num {
+    text-align: center;
+    font-size: 44px;
+    font-family: myfont;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    padding: 0;
+}
+
+.scan-btn {
+    margin: 24rpx auto 0 auto;
+    width: 600rpx;
+    height: 90rpx;
+    line-height: 90rpx;
+    background: #ffd900;
+    text-align: center;
+    color: #000;
+    font-family: PingFangSC-Regular;
+    background-image: linear-gradient(90deg,#FFEC00 0%,#FECC00 100%);
+    box-shadow: 0 20rpx 40rpx 0 rgba(255,221,110,0.60);
+    border-radius: 60rpx;
+}
+
+.manual-btn {
+    font-family: PingFangSC-Regular;
+    border: 3rpx solid rgba(68,68,68,0.2);
+    border-radius: 60rpx;
+    height: 90rpx;
+    line-height: 90rpx;
+    width: 600rpx;
+    font-size: 30rpx;
+    color: #2E2121;
+    text-align: center;
+    margin: 36rpx auto 0 auto;
+    background: transparent;
+}
+
+.tip {
+    font-size: 32rpx;
+    color: #333333;
+    letter-spacing: 0;
+    margin-top: 62rpx;
+}
+
+.nu-img-container {
+    float: right;
+    width: 400rpx;
+    height: 360rpx;
+}
+
+.nu-img {
+    width: 440rpx;
+    height: 396rpx;
+}
+
+.nu-title {
+    font-family: PingFangSC-Semibold;
+    font-size: 64rpx;
+    color: #333333;
+    letter-spacing: 0;
+    line-height: 64rpx;
+    margin-top: 400rpx;
+}
+
+.nu-desc {
+    font-family: PingFangSC-Regular;
+    font-size: 36rpx;
+    color: #666666;
+    letter-spacing: 0;
+    line-height: 36rpx;
+    margin-top: 40rpx;
+}
+
+.carno-modal-mask {
+    background: rgba(0,0,0,0.5);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+}
+
+.carno-modal {
+    width: 628rpx;
+    height: 568rpx;
+    background: #FFFFFF;
+    border-radius: 10px;
+    text-align: center;
+    position: fixed;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.carno-close {
+    float: right;
+    padding-right: 24rpx;
+    padding-top: 24rpx;
+}
+
+.carno-close .eimg {
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.carno-img {
+    padding-top: 60rpx;
+    padding-left: 40rpx;
+}
+
+.carno-img .eimg {
+    width: 220rpx;
+    height: 220rpx;
+}
+
+.carno-info {
+    font-size: 38rpx;
+    color: #333333;
+    line-height: 38rpx;
+    margin-top: 40rpx;
+    display: inline-flex;
+}
+
+.carno-info .times {
+    color: #FC5759;
+}
+
+.carno-btn {
+    width: 300rpx;
+    height: 90rpx;
+    background: #FFDC00;
+    border-radius: 60px;
+    margin: 60rpx auto;
+    display: table;
+}
+
+.carno-btn .text {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.carno-btn .detail {
+    font-size: 30rpx;
+    color: #333333;
+    letter-spacing: 0;
+}
+
+.carno-btn .tips {
+    opacity: 0.6;
+    font-size: 24rpx;
+    color: #333333;
+    letter-spacing: 0;
+}
+
+.manual {
+    padding-top: 110rpx;
+    margin-left: 44rpx;
+    background-color: #fff;
+}
+
+.manual-title {
+    font-family: PingFangSC-Semibold;
+    font-size: 64rpx;
+    color: #333333;
+    letter-spacing: 0;
+    line-height: 64rpx;
+}
+
+.manual-spec {
+    margin-top: 32rpx;
+    font-family: PingFangSC-Regular;
+    font-size: 32rpx;
+    color: #888888;
+    letter-spacing: 0;
+    line-height: 32rpx;
+}
+
+.manual-blank {
+    width: 6rpx;
+    height: 36rpx;
+    background: #FFDC00;
+    display: inline-block;
+    position: absolute;
+    margin-top: 150rpx;
+}
+
+.manual-input {
+    border: none;
+    border-bottom: solid 3rpx #EAEAEA;
+    margin-left: 0!important;
+    border-radius: 0;
+}
+
+.manual-btn-gap {
+    margin-top: 74rpx;
+}
+
+input {
+    margin-top: 120rpx;
+    width: 600rpx;
+    height: 90rpx;
+    display: inline-block;
+}
+
+.input-line {
+    background-color: #EAEAEA;
+    height: 3rpx;
+    width: 662rpx;
+    margin: auto;
+}
+
+button {
+    margin-top: 34rpx;
+    background: #CECECE;
+    border-radius: 100rpx;
+    width: 600rpx;
+    height: 90rpx;
+    line-height: 90rpx;
+    text-align: center;
+    margin: 34rpx auto 0 auto;
+    border: 0;
+    color: #888888;
+}
+
+button.active {
+    background-image: linear-gradient(90deg,#FFEC00 0%,#FECC00 100%);
+    box-shadow: 0 20rpx 40rpx 0 rgba(255,221,110,0.60);
+    border-radius: 100rpx;
+    color: #333333;
+}
+
+.prince-info {
+    width: 686rpx;
+    margin-top: 30rpx;
+    margin-left: 32rpx;
+    font-family: PingFangSC-Regular;
+    font-size: 25rpx;
+    color: #666;
+    letter-spacing: 0;
+    text-align: center;
+    line-height: 39rpx;
+}
+
+.image-modal-content {
+    width: 630rpx;
+    height: 866rpx;
+}
+
+.modal-outer-cancel-block {
+    position: absolute;
+    width: 30rpx;
+    height: 30rpx;
+    bottom: 120rpx;
+}
+
+.modal-outer-cancel-btn {
+    width: 60rpx;
+    height: 60rpx;
+    font-size: 60rpx;
+    color: white;
+}
+
+.more-btn-block {
+    margin-top: 54rpx;
+    position: relative;
+}
+
+.more-text {
+    width: 209rpx;
+    height: 30rpx;
+    font-size: 26rpx;
+    font-family: PingFangSC-Regular;
+    color: rgba(255,204,0,1);
+    line-height: 30rpx;
+}
+
+.more-btn {
+    width: 45rpx;
+    height: 40rpx;
+}
+
+.gift-btn {
+    width: 360rpx;
+    height: 90rpx;
+    background: #FFEC00;
+    border-radius: 100rpx;
+    text-align: center;
+    line-height: 90rpx;
+}
+
+.down {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+}
+
+.down-ofo {
+    margin-top: 185rpx;
+    width: 382rpx;
+    height: 351rpx;
+}
+
+.down-app {
+    margin-bottom: 128rpx;
+}
+
+.down-desc {
+    font-size: 28rpx;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+    color: rgba(62,58,57,1);
+    line-height: 40rpx;
+    letter-spacing: 1rpx;
+}
+
+.down-ico {
+    display: block;
+    margin: 11rpx auto 38rpx;
+    width: 32rpx;
+    height: 32rpx;
+}
+
+.stake-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.stake-bottom-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.stake-nu-img-container {
+    float: none;
+    width: 100%;
+    height: 590rpx;
+}
+
+.stake-nu-img {
+    width: 100%;
+    height: 590rpx;
+}
+
+.stake-prince-info {
+    display: flex;
+    align-items: center;
+    margin-top: 0;
+    margin-left: 0;
+    width: 100%;
+    line-height: 64rpx;
+    text-align: left;
+    background-color: #FFF8DB;
+}
+
+.stake-prince-ico {
+    display: inline-block;
+    margin-left: 32rpx;
+    margin-right: 20rpx;
+    width: 32rpx;
+    height: 32rpx;
+}
+
+.stake-prince-info-jump {
+    position: absolute;
+    right: 38rpx;
+}
+
+.stake-box {
+    text-align: left;
+    font-size: 26rpx;
+    padding-left: 36rpx;
+    line-height: 51rpx;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+    color: rgba(136,136,136,1);
+    letter-spacing: .5px;
+}
+
+.stake-broke-money {
+    font-size: 38rpx;
+    color: #FFC100;
+    font-weight: bold;
+}
+
+.stake-details {
+    display: block;
+    font-size: 26rpx;
+}
+
+.stake-rules {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    margin-top: 30rpx;
+    font-size: 26rpx;
+    line-height: 1;
+    width: 100%;
+    height: auto;
+    color: #FED87F;
+}
+
+.stake-scan-btn {
+    margin-top: 0;
+}
+
+/* @import "../bike/common.wxss"; */

@@ -1,0 +1,50 @@
+.nw-item-card {
+    position: relative;
+    min-height: 30rpx;
+    margin-left: 20rpx;
+    margin-right: 20rpx;
+    margin-top: 40rpx;
+    text-align: center;
+    
+}
+.wallet-card-bg{
+    width: 96%;
+}
+
+.list{
+    margin-left: 20rpx;
+    margin-right: 20rpx;
+}
+.buy-button{
+    border: 1px solid #DDD;
+    font-size: 15px;
+}
+.package{
+    margin-top: 20rpx;
+    padding-bottom: 20rpx;
+}
+.package .right-text{
+    color: #db584f;
+    margin-right: 10rpx;
+}
+
+.list-box{
+    border-bottom: 1px solid #EDEDED;
+    
+    /* margin-bottom: 30rpx; */
+}
+
+.package .list-main{
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1 1 auto;
+}
+
+.package .list-title{
+    margin-bottom: 10rpx;
+}
+.package .list-del{
+    font-size: 14px;
+    color: #888;
+
+}

@@ -1,0 +1,52 @@
+<view class="container">
+    <view class="nw-list" style="background: white;">
+        <view bindtap="tolink" class="nw-item nw-item-card}}" data-link="{{banner.redirecturl}}">
+            <image class="wallet-card-bg" src="{{banner.image}}"  mode="widthFix"></image>
+        </view>
+        <view class="list">
+            <view class="list-box showright package" bindtap="tolink" data-link="{{package.redirecturl}}">
+                <view class="list-main">
+                    <text class="list-title">{{package.title}}</text>
+                    <text class="list-del">{{package.des}}</text>
+                </view>
+                <view class="list-right">
+                    <text class="right-text">{{package.summary}}</text>
+                    <button class="buy-button" style="display: inline-block" wx:if="{{package.buttonShow}}">{{package.button_text}}</button>
+                </view>
+            </view>
+            <view class="list-box arrow" bindtap="tolink" data-link="/pages/balance/balance">
+                <view class="list-main">
+                    <text class="list-title">余额</text>
+                </view>
+                <view class="list-right">
+                    <text class="right-des">{{balance}} 元</text>
+                </view>
+            </view>
+            <view class="list-box arrow" bindtap="tolink" data-link="">
+                <view class="list-main">
+                    <text class="list-title">我的红包</text>
+                </view>
+                <view class="list-right">
+                    <text class="right-des">{{redEnvelope}} 元</text>
+                </view>
+            </view>
+            <view class="list-box arrow" bindtap="tolink" data-link="">
+                <view class="list-main">
+                    <text class="list-title">优惠券</text>
+                </view>
+                <view class="list-right">
+                    <text class="right-des">{{coupon}} 张</text>
+                </view>
+            </view>
+            <view class="list-box arrow" bindtap="tolink" data-link="">
+                <view class="list-main">
+                    <text class="list-title">我的积分</text>
+                </view>
+                <view class="list-right">
+                    <text class="right-des">{{point}}</text>
+                </view>
+            </view>
+        </view>
+
+    </view>
+</view>

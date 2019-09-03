@@ -1,0 +1,38 @@
+<!--pages/cardRoll/cardRoll.wxml-->
+<view class="containers" >
+    <view class="card-header">
+        <text class="header-tle">我的卡卷</text>
+    </view>
+    <view class="card-main">
+        <block wx:for="{{cardData}}" wx:key="cardData">
+            <view class="list-box card-box {{item.validCount<=0 && ' grays'}} " bindtap="tolink" data-link="/pages/purchaseCard/purchaseCard" >
+                <view class="list-main mgb_4 ">
+                    <view class="card-tle">
+                        {{item.name}}
+                    </view>
+                    <view class="card-des">
+                        {{item.des}}
+                    </view>
+                    <view class="card-info" wx:if="{{item.validCount>0}}">
+                            剩余 {{item.validCount}} {{item.duringType=="1"?'天':item.duringType=="2"?'次':''}}
+                    </view>
+                    <view class="card-info" wx:if="{{item.validCount<=0}}">
+                        已过期
+                    </view>
+                    <view class="card-btn">
+                            {{item.validCount<=0?"购买":"续费"}}
+                    </view>
+                </view>
+                <view class="list-right ">
+                    <image src="{{item.image}}" mode="widthFix"></image>
+                </view>
+            </view>
+        </block>
+        <view class="nodata" wx:if="{{!cardData || cardData.length==0?true:false}}">
+            <view class="nodata_content">
+                <view class="myicon cardRolls-icon"></view>
+                <view>暂无卡卷</view>
+            </view>
+        </view>
+    </view>
+</view>

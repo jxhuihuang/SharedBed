@@ -1,0 +1,46 @@
+<view class="container">
+    <text class="auth-info-text">请扫描故障车二维码</text>
+    <view class="input-section">
+        <input  bindblur="onBlur" bindinput="inputPlate" class="manual-input" maxlength="8" placeholder="扫描二维码或输入编码"
+            type="number"></input>
+        <view class="scanUnlock-main" bindtap="scanUnlock">
+            <image src="../../imgs/scancode.png" class="usecar-icons"></image>
+        </view>
+    </view>
+    <text class="auth-info-text">请选择单车具体故障</text>
+    <view class="malf-section">
+            <view bindtap="selectMalf" wx:for="{{malfData}}" wx:key="malfData" class="malf-box {{item.isselect?'current':''}}" data-scan="{{index+1}}">
+                <view class="scanUnlock-img" mode="widthFix" >
+                    <image src="{{item.icon}}" class="usecar-icons" mode="widthFix" ></image>
+                </view>
+                <text class="scanUnlock-text" >{{item.name}}</text>
+            </view>
+    </view>
+    <view style="height: 115rpx; width:100%" wx:if="{{selectMalfData.length>0?true:false}}">
+        <view class="carma-wrap">
+            <view  class="carma-box" wx:for="{{nalfunctionImage}}" wx:key="malfData">
+                <view class="img-box">
+                    <image src="{{item.path}}" class="usecar-icons" mode="widthFix" ></image>
+                </view>
+                <view class="carmaClose myIconfont close-icon" data-src="{{item.path}}" bindtap="closeImg"></view>
+            </view>
+        
+            <view class="carma-box carma-choose" bindtap="chooseImage" wx:if="{{imgNum>0?true:false}}">
+                <view class="img-box">
+                    <image src="../../imgs/carmas.png" class="carma-icons " mode="widthFix" ></image>
+                </view>
+            </view>
+        </view>
+    </view>
+   
+    <view class="textarea-section" wx:if="{{selectMalfData.length>0?true:false}}">
+        <textarea bindinput="textareaChange" auto-height placeholder="请描述具体故障" placeholder-style="font-size:14px" maxlength="{{textarea_maxLength}}"/>
+        <view class="textarea-statistics">{{currentLength}} / {{textarea_maxLength}}</view>
+    </view>
+
+    <view class="h-layout" style="margin-top:60rpx; padding-bottom:80px;height:60px;"  >
+        <button bindtap="ofoDispatch" class="confirm-btn" disabled="{{selectMalfData.length>0 && eqCode!='' && nalfunctionImage.length>0 && nalfunctionText!=''?false:true}}">
+            提交
+        </button>
+    </view> 
+</view>

@@ -1,0 +1,57 @@
+<!-- <import src="./loading.wxml"></import> -->
+<import src="../../common/alertModal.wxml" />
+<view class="container">
+    <view class="map-container" id="map-container">
+        <view bindtap="ofoDispatch" class="ofo-main-bluebar" data-itemtype="blueBar" data-action="{{blueBar.action}}" data-evtobj="" data-itemtype="{{blueBar.type}}" data-redirecturl="{{blueBar.redirecturl}}" wx:if="{{blueBar.showNoticeBanner}}">
+            <image class="ofo-notice-icon" src="{{blueBar.noticeIcon}}" wx:if="{{blueBar.noticeIcon && blueBar.noticeIcon!=''?true:false}}"></image>
+            <view class="ofo-notice-text v-center">{{blueBar.noticeText}}</view>
+            <image class="ofo-notice-more" src="{{blueBar.moreBtn}}" wx:if="{{blueBar.hasNoticeMore}}"></image>
+        </view>
+        
+        <view class=" container2 {{blueBar.showNoticeBanner?'ofo-main-map':'ofo-main-maps'}}">
+            <map bindmarkertap="ofoDispatch" bindregionchange="regionchange" circles="{{circles}}" id="{{mapId}}" includePoints="{{includePoints}}" latitude="{{position?position.latitude:initPosition.latitude}}" longitude="{{position?position.longitude:initPosition.longitude}}" markers="{{markers}}" polygons="{{polygons}}" scale="{{scale}}" showLocation="{{true}}" style="height: 100%; width: 100%;z-index:10" wx:if="{{showMap}}">
+                <block wx:if="{{showMap && topActivity.showActivity}}">
+                    <cover-view class="map-cover topBanner" >
+                        <cover-view class="list-box" bindtap="ofoDispatch" data-redirecturl="{{topActivity.redirecturl}}">
+                            <cover-view class="list-main">
+                                <cover-view class="list-icon">
+                                    <cover-image class="banner-img" src="{{topActivity.iconPath}}"></cover-image>  
+                                </cover-view>
+                                <cover-view class="banner-main">
+                                   {{topActivity.title}}
+                                </cover-view>
+                            </cover-view>
+                        </cover-view>
+                    </cover-view>
+                </block>
+                <cover-image bindtap="ofoDispatch" class="map-cover search-stake" data-action="{{toSearchStake.action}}"  data-evtobj="{{toSearchStake}}" data-redirecturl="{{toSearchStake.redirecturl}}" src="/imgs/stake-search.png" wx:if="{{showMap&&isStakeCity}}"></cover-image>
+                <cover-image class="map-cover center-icon" src="/imgs/position.png"   wx:if="{{showMap}}"></cover-image>
+                <cover-view class="map-cover position-icon" bindtap="ofoDispatch" data-itemtype="position"  data-evtobj="position" wx:if="{{showMap}}">
+                    <cover-image  class="position-img"  src="/imgs/fabs.png"  mode="widthFix"></cover-image>
+                </cover-view>
+                <cover-view class="map-cover usecar usecar-box" bindtap="ofoDispatch"  data-itemtype="map-cover"  data-evtobj="usecar"  wx:if="{{showMap}}">
+                    <cover-image src="/imgs/scancode_white.png" class="usecar-icons"></cover-image>
+                    <cover-view class="usecar-text">扫码用车</cover-view>
+                </cover-view>
+                <cover-view class="map-cover wallets" bindtap="ofoDispatch" data-itemtype="map-cover" data-evtobj="wallet" wx:if="{{showMap}}">
+                    <cover-image  class="wallets-icons"    src="/imgs/kajuan.png" ></cover-image>
+                </cover-view>
+                
+                <cover-view class="map-cover activityIcon-warp" bindtap="ofoDispatch" data-itemtype="map-cover" data-evtobj="activity" wx:if="{{showMap && activityIcon.showActivity}}">
+                    <cover-image  class="activity-icon"  src="{{activityIcon.iconPath}}" ></cover-image>
+                </cover-view>
+                <cover-view class="map-cover  napIcon-wrap">
+                    <cover-view class="napIcon" bindtap="ofoDispatch" data-itemtype="map-cover"  data-evtobj="malfunction" wx:if="{{showMap}}" >
+                        <cover-image  class="napIcon-icon vh-center"  src="/imgs/iconweixiu.png" ></cover-image>
+                   </cover-view>
+                   <cover-view class="napIcon" bindtap="ofoDispatch" data-itemtype="map-cover" data-evtobj="userCenter" wx:if="{{showMap}}"  >
+                       <cover-image  class="napIcon-icon vh-center"  src="/imgs/usercenter.png" ></cover-image>
+                   </cover-view>
+                </cover-view>
+            </map>
+        </view>
+    </view>
+</view>
+    <template is="positionItem" wx:if="{{modelShow}}" data="{{...positionModal}}"/>
+
+

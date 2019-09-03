@@ -1,0 +1,94 @@
+/* pages/cardRoll/cardRoll.wxss */
+.containers{
+    background:#f5f6f8;
+}
+.card-header{
+    height: 160rpx;
+    background: #FFF;
+    display: flex;
+    align-items: center;
+    margin-bottom: 40rpx;
+    padding:0 40rpx;
+}
+
+.header-tle{
+    font-size: 40rpx;
+}
+
+.card-main{
+    text-align: center;
+    padding:0 40rpx;
+    height: calc(100vh - 240rpx)
+}
+
+.card-box{
+    display: flex;
+    margin: auto;
+    background: #FFF;
+    min-height: 240rpx;
+    /* width: 98%; */
+    box-shadow: 1px 1px 2px 1px #EDEDED;
+    border-radius: 10px;
+}
+
+
+.list-box.card-box{
+    align-items: stretch;
+    margin-bottom: 40rpx;
+}
+.card-box .list-main{
+    display: block;
+    text-align: left;
+    padding-left: 40rpx;
+    width: 70%;
+}
+.card-box .list-right{
+    width: 30%;
+}
+
+.card-tle{
+    font-size: 30rpx;
+    margin: 34rpx 0 10rpx 0;
+}
+.card-des{
+    font-size: 26rpx;
+    color: #888;
+    margin: 0 0 26rpx 0;
+}
+.card-info{
+    font-size: 26rpx;
+    color: #00b26a;
+    margin: 0 0 26rpx 0;
+}
+.card-btn{
+    text-align: center;
+    width: 40%;
+    height: 50rpx;
+    border-radius: 40rpx;
+    border: 1px solid #EDEDED;
+    font-size: 24rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.nodata{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.nodata_content{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    color: #888;
+}
+.cardRolls-icon{
+    font-size: 60px;
+    color: #888;
+    margin-bottom: 20rpx;
+}

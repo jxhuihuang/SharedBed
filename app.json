@@ -1,0 +1,33 @@
+{
+    "pages": [
+        
+        "pages/map/map",
+        "pages/loginUnited/loginUnited",
+        "pages/openBtCar/openBtCar",
+        "pages/malfunction/malfunction",
+        "pages/userCenter/userCenter",
+        "pages/wallet/wallet",
+        "pages/aboutUs/aboutUs",
+        "pages/unlock/unlock",
+        "pages/balance/balance",
+        "pages/recharge/recharge",
+        "pages/myCard/myCard",
+        "pages/purchaseCard/purchaseCard",
+        "pages/myOrder/myOrder",
+        "pages/activity/activity",
+        "pages/billDetail/billDetail",
+
+        "pages/logs/logs"
+    ],
+    "permission": {
+        "scope.userLocation": {
+            "desc": "该位置信息将用于为你提供车辆骑行功能"
+        }
+    },
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "易陪物联",
+        "navigationBarTextStyle": "black"
+    }
+}

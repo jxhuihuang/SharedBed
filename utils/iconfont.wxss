@@ -1,0 +1,93 @@
+@font-face {
+    font-family: 'myIconfont';  /* project id 1350179 */
+    src: url('//at.alicdn.com/t/font_1350179_8ucincwhoi.eot');
+    src: url('//at.alicdn.com/t/font_1350179_8ucincwhoi.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_1350179_8ucincwhoi.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_1350179_8ucincwhoi.woff') format('woff'),
+    url('//at.alicdn.com/t/font_1350179_8ucincwhoi.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_1350179_8ucincwhoi.svg#myIconfont') format('svg');
+}
+
+
+
+
+
+.myIconfont{
+    font-family:"myIconfont" !important;
+    font-size:16px;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+.myicon{
+    font-size:16px;
+}
+.myicon::before{
+    font-family:"myIconfont" !important;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+/***程序所用的icon图标**/
+
+/* 定位 */
+.icon-position:before {
+    content: "\e607"
+}
+/*  扫描*/
+.scan-icon:before{
+    content: "\e611"
+}
+/* 关闭 */
+.close-icon:before{
+    content: "\e923";
+}
+/* 钱包 */
+.wallet-icon::before{
+    content: "\e6e2";
+}
+/* 卡卷 */
+.cardRoll-icon::before{
+    content: "\e675";
+}
+/* 卡卷 无底色 */
+.cardRolls-icon::before{
+    content: "\e648";
+}
+/* 维修 */
+.service-icon::before{
+    content: "\e6a7";
+}
+/* 客服 */
+.customer-icon::before{
+    content: "\e600";
+}
+/* 关于我们 */
+.aboutUs-icon::before{
+    content: "\e614";
+}
+/* 订单 */
+.order-icon::before{
+    content: "\e6aa";
+}
+
+/* 右箭头 */
+.right-icon::before{
+    content: "\e82e";
+}
+/* 右箭头 */
+.rightc-icon::before{
+    content: "\e778";
+}
+/* 时间 */
+.time-icon::before{
+    content: "\e629";
+}
+/* 账单明细 */
+.billDetail-icon::before{
+    content: "\e666";
+}

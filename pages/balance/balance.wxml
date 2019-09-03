@@ -1,0 +1,19 @@
+<view class="container">
+        <view class="balance-icon">
+            <image src="../../imgs/deposit_withdraw_modal_1_alert.png" class="usecar-icons" mode="widthFix"></image>
+        </view>
+        <view class="balance-tle">
+            账户余额
+        </view>
+        <view class="balances">
+            <text>1.00 元</text>
+        </view>
+        <view class="btn-content">
+            <button bindtap="tolink" class="recharge-btn" data-link="/pages/recharge/recharge">
+                充值
+            </button>
+            <!-- <button bindtap="ofoDispatch" class="other-btn" >
+                购买套餐更优惠
+            </button> -->
+        </view>
+</view>

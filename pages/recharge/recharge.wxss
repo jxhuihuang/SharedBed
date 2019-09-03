@@ -1,0 +1,80 @@
+/* pages/recharge/recharge.wxss */
+
+.main{
+    margin: 0 40rpx;
+}
+.recharge-bottom{
+    margin-bottom:120rpx;
+}
+.balance{
+    font-family: PingFangSC-Semibold;
+    font-size: 16px;
+    padding:50rpx ;
+    border-bottom: 1px solid #EDEDED;
+
+}
+.recharge-tle{
+    font-size: 32rpx;
+    font-family: PingFangSC-Semibold;
+}
+.recharge-content{
+    margin: 20rpx 0 20rpx 0;
+
+    font-size: 15px;
+}
+.recharge-warp{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    margin-top:40rpx
+}
+
+.recharge-warp > view{
+    flex:0 0 50%;
+    width: 50%;
+    height: 140rpx;
+    margin-bottom: 40rpx;
+}
+
+.recharge-warp > view > text{
+    display: flex;
+    height: 100%;
+    font-size: 16px;
+    background: #f6f6f6;
+    align-items: center;
+    justify-content: center;
+    margin: 0 20rpx;
+    border-radius: 10px;
+}
+
+.recharge-warp > view.current > text{
+    background: #feb727;
+    color: #FFF;
+
+}
+
+
+.recharge-btn{
+    width: 80%;
+    height: 100rpx;
+    background: #feb727;
+    border-radius: 50rpx;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFF;
+}
+
+.recharge-des{
+    display: block;
+    padding: 0 40rpx;
+    font-size: 26rpx;
+    color: rgb(180, 165, 165);
+    text-align: center;
+    margin-top: 30rpx;
+}
+
+.protocol{
+    color: #dfaf9a;
+}

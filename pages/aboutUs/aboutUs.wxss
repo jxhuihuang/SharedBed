@@ -1,0 +1,35 @@
+.aboutUs-main{
+    margin: 0 40rpx;
+}
+
+.headers{
+    min-height: 120rpx;
+    text-align: center;
+}
+
+.headers-icon{
+    width: 160rpx;
+    height: 160rpx;
+    margin:auto;
+    margin-top: 50rpx;
+}
+
+.program-title{
+    margin-top: 40rpx
+}
+.program-des{
+    margin-top: 40rpx;
+    text-align: left;
+    line-height: 2;
+    font-size: 13px;
+    color: #888;
+}
+
+.list{
+    margin-top: 40rpx;
+}
+
+.list-box{
+    border-bottom: 1px solid #EDEDED;
+    /* margin-bottom: 30rpx; */
+}

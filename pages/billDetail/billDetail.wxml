@@ -1,0 +1,17 @@
+<!--pages/myOrder/myOrder.wxml-->
+<view class="containers" >
+    <view class="list">
+        <block wx:for="{{detailList}}" wx:key="orderList_{{index}}">
+                <view class="list-box detail-box"  data-link="">
+                    <view class="list-main">
+                        <view class="list-title">{{modeObj[item.mode]}} · 付款{{item.active=="1"?"成功":"失败"}} </view>
+                        <view class="list-date"> {{item.created_at}}</view>
+                    </view>
+                    <view class="list-right ">
+                        <view class="amount"> {{item.amount}} 元</view>
+                        <view class="types"> {{modeObj[item.mode]}}</view>
+                    </view>
+                </view>
+        </block>
+    </view>
+</view>

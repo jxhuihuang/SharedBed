@@ -1,0 +1,55 @@
+/* pages/myOrder/myOrder.wxss */
+
+.containers{
+    background:#f5f6f8;
+
+
+}
+.list{
+    padding: 20rpx 40rpx;
+}
+.order-box{
+    flex-wrap: wrap;
+    margin: auto;
+    background: #FFF;
+    min-height: 180rpx;
+    box-shadow: 1px 1px 2px 1px #EDEDED;
+    border-radius: 10px;
+    margin-bottom: 40rpx;
+    padding: 0 40rpx;
+}
+
+.list-header{
+    width: 100%;
+    flex: 1 1 auto;
+    font-size: 26rpx;
+    color: #888;
+    margin-bottom: 20rpx;
+    margin-top: 20rpx;
+}
+.list-main{
+    width: 60%;
+    color: #888;
+    font-size: 28rpx;
+}
+.list-right{
+    font-size: 30rpx;
+    color: #333;
+
+}
+.list-footer{
+    width: 100%;
+    flex: 1 1 auto;
+    font-size: 28rpx;
+    min-height: 80rpx;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #EDEDED;
+    color: #888;
+    margin-top: 40rpx;
+}
+
+.time-icon{
+    font-size: 24rpx;
+    margin-right: 10rpx;
+}

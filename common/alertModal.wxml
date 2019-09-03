@@ -1,0 +1,17 @@
+
+<template name="positionItem" >
+    <cover-view class="modal-container">
+        <cover-view bindtap="closeModal" class="modal-background"></cover-view>
+        <cover-view class="modal-content v-layout vh-center " style="align-items: center; width: 560rpx;">
+            <!-- <cover-image class="myIconfont icon-position"></cover-image> -->
+            <cover-image class="model-icon" src="{{icon}}"  wx:if="{{icon}}"></cover-image>
+            <cover-view class="redpacket-modal-desc">
+                {{title}}
+            </cover-view>
+            
+            <cover-view bindtap="{{bindtap}}" class="yellow-btn redpacket-modal-btn" data-action="" data-itemtype="" data-redirecturl="">
+                {{confirmBtn}}
+            </cover-view>
+        </cover-view>
+    </cover-view>
+</template>

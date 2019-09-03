@@ -1,0 +1,51 @@
+/* pages/activity/activity.wxss */
+.description {
+    font-family: PingFangSC-Regular;
+    font-size: 30rpx;
+    color: #4E4E4E;
+    letter-spacing: 0;
+    line-height: 50rpx;
+    margin-top: 32rpx;
+}
+
+.item .circle {
+    width: 20rpx;
+    height: 20rpx;
+    background: #FFDC00;
+    margin-right: 32rpx;
+    margin-top: 17rpx;
+    border-radius: 10rpx;
+}
+
+.item text {
+    width: 570rpx;
+    margin-bottom: 40rpx;
+}
+
+.bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 160rpx;
+    background: #FFFFFF;
+    box-shadow: 0 2rpx 4rpx 0 rgba(0,0,0,0.50);
+}
+
+.use {
+    margin-top: 36rpx;
+}
+
+.share {
+    margin-top: 70rpx;
+}
+
+.activity-banner {
+    width: 750rpx;
+    height: 640rpx;
+}
+
+.activity-title-banner {
+    width: 750rpx;
+    height: 114rpx;
+}

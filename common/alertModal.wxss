@@ -1,0 +1,9 @@
+modal-containers{
+    text-align: center;
+}
+.modal-contents{
+    background: #FFFFFF;
+    border-radius: 12rpx;
+    overflow: hidden;
+    text-align: center;
+}

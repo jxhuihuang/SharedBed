@@ -1,0 +1,79 @@
+<import src="../../common/showModel.wxml"></import>
+<view class="container">
+    <view class="v-layout h-center" wx:if="{{pageShow=='loginUnited'}}">
+        <image class="login-banner" mode="widthFix" src="../../imgs/login_banner.png"></image>
+        <view class="wx-login">
+            <button bindgetuserinfo="wxGetInfo" class="login-channel-btn ofo-common-btn" data-evtobj="{{channelLoginBtn}}" openType="getUserInfo" type="primary">
+				{{channelLoginBtn.text}}
+			</button>
+        </view>
+        <view bindtap="ofoDispatch" class="phone-login" data-evtobj="{{phoneLoginBtn}}">
+			{{phoneLoginBtn.text}}
+		</view>
+    </view>
+    <view style="padding:44rpx" wx:else>
+        <view class="v-layout banner-text">
+			{{phoneCaptcha.isShow?'验证码已发送至':'欢迎你'}}
+		</view>
+        <view class="v-layout" style="margin-top:70rpx;">
+            <view class="tel-item">
+                <view class="input-wrapper tel-input {{phoneCaptcha.isShow?'special-input':''}}">
+                    <input bindinput="inputTel" class="input common-input" disabled="{{phoneCaptcha.isShow}}" focus="{{!phoneCaptcha.isShow}}" maxlength="13" placeholder="请输入手机号" type="number" value="{{telText}}"></input>
+                    <view bindtap="cleanTel" class="btn-wrapper" wx:if="{{telClose}}">
+                        <image class="icon-error" src="../../imgs/clean.png"></image>
+                    </view>
+                </view>
+                <block wx:if="{{phoneCaptcha.isShow}}">
+                    <view bindtap="ofoDispatch" class="yellow-theme phoneCaptcha-btn " data-action="getCaptchaV5" disabled="{{false}}" wx:if="{{leftSeconds==60}}">
+						重新发送
+					</view>
+                    <view class="yellow-theme left-seconds" disabled="{{true}}" wx:elif="{{leftSeconds<60}}">
+                        ({{leftSeconds}}秒)
+					</view>
+                </block>
+            </view>
+            <view class="h-layout img-captcha" wx:if="{{needCaptcha}}">
+                <view class="input-wrapper captcha-input">
+                    <view style="width:100%;" wx:for="{{imgCaptcha.codeIndex}}">
+                        <view class="input-number">
+							 {{imgCaptcha.code[item]}}
+						 </view>
+                    </view>
+                </view>
+                <input bindinput="inputImgCaptcha" class="input common-input  no-placeholder" focus="true" maxlength="4" placeholder="请输入右边数字" placeholderClass="placeholder-center" type="number" value="{{imgCaptcha.code}}"></input>
+                <view class="err-inner">
+                    <view class="err-wrapper">
+                        <image class="err-img" src="{{captchaSource}}"></image>
+                        <view bindtap="ofoDispatch" class="btn-wrapper bd1" data-action="{{refreshCaptchaBtn.action}}">
+                            <image class="icon-refresh" src="{{refreshCaptchaBtn.src}}"></image>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="v-layout" style="margin-top:80rpx; position:relative; overflow: hidden;" wx:if="{{phoneCaptcha.isShow}}">
+                <view class="input-wrapper captcha-input">
+                    <view style="width:100%;" wx:for="{{phoneCaptcha.codeIndex}}">
+                        <view class="input-number">
+							 {{phoneCaptcha.code[item]}}
+						 </view>
+                    </view>
+                </view>
+                <input bindinput="inputTelCaptcha" class="input common-input  no-placeholder" focus="true" maxlength="4" placeholder="请输入手机验证码" placeholderClass="placeholder-center" type="number" value="{{phoneCaptcha.code}}"></input>
+            </view>
+            <view class="captch-msg">
+				{{captchaErrMsg}}
+			</view>
+            <view class="h-layout" style="margin-top:120rpx;" wx:if="{{phoneCaptcha.isShow}}">
+                <button bindtap="ofoDispatch" class="yellow-theme confirm-btn" data-evtobj="{{loginBtn}}">
+					{{loginBtn.text}}
+				</button>
+            </view>
+            <view class="h-layout" style="margin-top:120rpx;" wx:elif="1">
+                <button bindtap="ofoDispatch" class="yellow-theme confirm-btn" data-evtobj="{{getCaptchaBtn}}">
+					{{getCaptchaBtn.text}}
+				</button>
+            </view>
+        </view>
+    </view>
+</view>
+<template is="alertModals" data="{{...confirmModalData}}" wx:if="{{showuserPhoneModal}}"></template>

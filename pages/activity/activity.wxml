@@ -1,0 +1,16 @@
+<view class="container2" style="overflow: auto;">
+    <view class="v-layout" style="align-items: center;">
+        <image class="banner activity-banner" src="{{activityBannerUrl}}"></image>
+        <view class="description v-layout" style="align-items: center;">
+            <view class="h-layout item" wx:for="{{details}}" wx:for-index="idx" wx:key="idx_{{index}}">
+                <view class="circle"></view>
+                <text>{{item.content}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="v-layout bar" style="align-items: center;" wx:if="{{false}}">
+        <button class="pay-btn" openType="share" plain="true" style="border-color: #FFFFFF;">
+            <view class="yellow-btn">分享好友</view>
+        </button>
+    </view>
+</view>
