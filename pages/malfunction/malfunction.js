@@ -7,36 +7,36 @@ Page({
                 icon:"../../imgs/gz/gz1.png",
                 isselect:false
             },
+            // {
+            //     name:"刹车",
+            //     icon:"../../imgs/gz/gz2.png",
+            //     isselect:false
+            // },
             {
-                name:"刹车",
-                icon:"../../imgs/gz/gz2.png",
-                isselect:false
-            },
-            {
-                name:"链条",
+                name:"没电",
                 icon:"../../imgs/gz/gz3.png",
                 isselect:false
             },
-            {
-                name:"脚踏",
-                icon:"../../imgs/gz/gz4.png",
-                isselect:false
-            },
+            // {
+            //     name:"脚踏",
+            //     icon:"../../imgs/gz/gz4.png",
+            //     isselect:false
+            // },
             {
                 name:"二维码",
                 icon:"../../imgs/gz/gz5.png",
                 isselect:false
             },
-            {
-                name:"车把",
-                icon:"../../imgs/gz/gz6.png",
-                isselect:false
-            },
-            {
-                name:"车轮",
-                icon:"../../imgs/gz/gz7.png",
-                isselect:false
-            },
+            // {
+            //     name:"车把",
+            //     icon:"../../imgs/gz/gz6.png",
+            //     isselect:false
+            // },
+            // {
+            //     name:"车轮",
+            //     icon:"../../imgs/gz/gz7.png",
+            //     isselect:false
+            // },
             {
                 name:"其他部位",
                 icon:"../../imgs/gz/gz8.png",

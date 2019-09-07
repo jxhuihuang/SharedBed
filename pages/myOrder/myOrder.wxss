@@ -47,9 +47,14 @@
     border-top: 1px solid #EDEDED;
     color: #888;
     margin-top: 40rpx;
+    justify-content: space-between;
 }
 
 .time-icon{
     font-size: 24rpx;
     margin-right: 10rpx;
+}
+
+.created_at{
+    font-size: 26rpx;
 }

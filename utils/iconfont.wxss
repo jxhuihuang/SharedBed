@@ -1,11 +1,11 @@
 @font-face {
     font-family: 'myIconfont';  /* project id 1350179 */
-    src: url('//at.alicdn.com/t/font_1350179_8ucincwhoi.eot');
-    src: url('//at.alicdn.com/t/font_1350179_8ucincwhoi.eot?#iefix') format('embedded-opentype'),
-    url('//at.alicdn.com/t/font_1350179_8ucincwhoi.woff2') format('woff2'),
-    url('//at.alicdn.com/t/font_1350179_8ucincwhoi.woff') format('woff'),
-    url('//at.alicdn.com/t/font_1350179_8ucincwhoi.ttf') format('truetype'),
-    url('//at.alicdn.com/t/font_1350179_8ucincwhoi.svg#myIconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_1350179_ylwfdbrydck.eot');
+  src: url('//at.alicdn.com/t/font_1350179_ylwfdbrydck.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1350179_ylwfdbrydck.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1350179_ylwfdbrydck.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1350179_ylwfdbrydck.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1350179_ylwfdbrydck.svg#myIconfont') format('svg');
 }
 
 
@@ -90,4 +90,15 @@
 /* 账单明细 */
 .billDetail-icon::before{
     content: "\e666";
+}
+/* 成功 */
+.success-icon::before{
+    content: "\e608";
+}
+.success-icon{
+    color: #00c478;
+}
+/* 意见反馈 */
+.feedBack--icon::before{
+    content: "\e659";
 }

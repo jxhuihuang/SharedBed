@@ -1,0 +1,8 @@
+<view class="containers" >
+        <view class="wx-login">
+            <button bindtap="createOrder" class="login-channel-btn ofo-common-btn"  type="primary">
+               创建订单
+            </button>
+        </view>
+    
+</view>

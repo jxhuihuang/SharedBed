@@ -1,4 +1,4 @@
-import {portUrls, showToast} from "../../utils/util";
+import {portUrls, ajaxFns, showToast} from "../../utils/util";
 const app = getApp();
 // pages/userCenter/userCenter.js
 Page({
@@ -9,6 +9,7 @@ Page({
     data: {
         userInfo: {},
         phone:'',
+        showTestHtml:true,
     },
 
     /**
@@ -30,34 +31,8 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
         let userInfo = wx.getStorageSync('userInfo') || {};
-        this.getUserInfo().then((res)=>{
-            if(res.data){
-                let resData=res.data;
-                let resUser=resData.user || {};
-                let nickname=resData.nickname || "";
-                let avatar=resUser.avatar || "";
-                let phone=resUser.phone || "";
-                let only_phone=resData.only_phone || "";
-                nickname!=""?userInfo.nickname=nickname:"";
-                avatar!=""?userInfo.avatar=avatar:"";
-                userInfo.phone=phone;
-                userInfo.only_phone=only_phone;
-                let reg=/^([0-9]{3})([0-9]*?)([0-9]{4})?$/
-                if(phone!="" && reg.exec(phone)){
-                    userInfo.treatphone=phone.replace(reg,'$1****$3');
-                }else{
-                    userInfo.treatphone=""
-                }
-                wx.setStorageSync('userInfo', userInfo);
-                this.setData({
-                    userInfo: userInfo,
-                })
-                
-            }
-           
-        })
+        this.getUserInfo()
         // console.log('userInfo', userInfo);
     },
 
@@ -82,26 +57,37 @@ Page({
                 url: link,
             })
         }
-    },
+    },/***获取用户信息 */
     getUserInfo:function(){
+        const $this=this;
         let userInfo = app.globalData.userInfo || {};
         const p = new Promise(function (resolve, reject) {
-            wx.request({
-                url: portUrls.member,
+            ajaxFns({
                 header: {
                     'Authorization': 'Bearer ' + userInfo.accessToken
-                    // 'content-type': 'application/x-www-form-urlencoded'
-                    // 'content-type': 'application/json' // 默认值
                 },
                 success(res) {
-                    if(res.data){
-                        resolve(res.data)
+                    let resData=res.data || {};
+                    let resUser=resData.user || {};
+                    let phone=resUser.phone || "";
+                    userInfo.nickname=resData.nickname || "";
+                    userInfo.avatar=resUser.avatar || "";
+                    userInfo.phone=resUser.phone || "";
+                    userInfo.only_phone=resData.only_phone;
+                    let reg=/^([0-9]{3})([0-9]*?)([0-9]{4})?$/
+                    if(phone!="" && reg.exec(phone)){
+                        userInfo.treatphone=phone.replace(reg,'$1****$3');
                     }else{
-                        showToast("获取信息失败")
+                        userInfo.treatphone=""
                     }
+                    // console.log('userCenter_userInfo',userInfo);
+                    wx.setStorageSync('userInfo', userInfo);
+                    $this.setData({
+                        userInfo: userInfo,
+                    })
+                    resolve(res)
                 }
-            })
-
+            },portUrls.member)
         })
         return p;
     }

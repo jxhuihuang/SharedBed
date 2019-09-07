@@ -33,20 +33,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        const accountInfo = wx.getAccountInfoSync();
-        console.log('accountInfo', accountInfo);
-        wx.getSystemInfo({
-            success(res) {
-                console.log(res)
-                console.log(res.model)
-                console.log(res.pixelRatio)
-                console.log(res.windowWidth)
-                console.log(res.windowHeight)
-                console.log(res.language)
-                console.log(res.version)
-                console.log(res.platform)
-            }
-        })
+        
 
     },
 

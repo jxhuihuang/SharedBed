@@ -1,0 +1,21 @@
+<!--pages/Feedback/Feedback.wxml-->
+<view class="containers" >
+        <block wx:if="{{!feedBackSuccess}}">
+            <view class="feedBack-tle blod">您的意见:</view>
+            <view class="textarea-section">
+                <textarea bindinput="textareaChange" value="{{feedBackContent}}" auto-height placeholder="请输入反馈内容" placeholder-style="font-size:14px" maxlength="{{textarea_maxLength}}"/>
+                <view class="textarea-statistics">{{currentLength}} / {{textarea_maxLength}}</view>
+            </view>
+            <view class="h-layout" style="margin-top:60rpx; padding-bottom:80px;height:60px;"  >
+                <button bindtap="submitFeedBack" class="confirm-btn" >
+                    提交
+                </button>
+            </view> 
+        </block>
+        <block wx:if="{{feedBackSuccess}}">
+            <view class="feedBackSuccess">
+                <view class="myicon success-icon"></view>
+                <view class="feedBack-info">工作人员将会在第一时间评估处理，感谢您的反馈</view>
+            </view>
+        </block>
+</view>

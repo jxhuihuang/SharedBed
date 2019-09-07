@@ -1,4 +1,4 @@
-import {portUrls, showToast} from "../../utils/util";
+import {portUrls, showToast, ajaxFns} from "../../utils/util";
 // pages/billDetail/billDetail.js
 Page({
 
@@ -70,7 +70,7 @@ Page({
      */
     onShow: function () {
         this.getInfo().then((res)=>{
-            
+            console.log("deail_res",res);
         })
     },
 
@@ -101,36 +101,23 @@ Page({
     onReachBottom: function () {
 
     },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-
-    },
     getInfo: function () {
         let userInfo = wx.getStorageSync('userInfo') || {};
         const p = new Promise(function (resolve, reject) {
-            wx.request({
-                url: portUrls.bill,
+            ajaxFns({
                 data:{
                     'page': '1',
                     'perPage': '10'
                 },
                 header: {
-                    'Authorization': 'Bearer ' + userInfo.access_token
+                    'Authorization': 'Bearer ' + userInfo.accessToken
                 },
+                erroText:"获取交易明细失败",
                 success(res) {
-                    if (res.data) {
-                        resolve(res.data)
-                    } else {
-                        showToast("获取信息失败")
-                    }
+                    resolve(res)
                 }
-            })
-
+            },portUrls.bill)
         })
         return p;
-
     }
 })

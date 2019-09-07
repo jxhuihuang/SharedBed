@@ -1,17 +1,16 @@
-
-<view class="container" >
+<view class="container">
     <view>
         <view class="userHeader-main">
             <view class="userAvatar">
-                <image src="{{userInfo.avatarUrl}}" class="usecar-icons" mode="widthFix"></image>
+                <image src="{{userInfo.avatar}}" class="usecar-icons" mode="widthFix"></image>
             </view>
             <view>{{userInfo.treatphone!=''?userInfo.treatphone:userInfo.nickName}}</view>
         </view>
-        <view class="list-warp" >
+        <view class="list-warp">
             <view class="list-box arrow" bindtap="tolink" data-link="/pages/myOrder/myOrder">
                 <view class="list-main">
                     <view class="list-icon">
-                        <view class="myIconfont order-icon userIcon"></view>   
+                        <view class="myIconfont order-icon userIcon"></view>
                     </view>
                     <text class="list-title">我的订单</text>
                 </view>
@@ -19,64 +18,81 @@
                     订单查询
                 </view>
             </view>
-            
+
         </view>
-        <view class="list-warp" >
-                <view class="list-box arrow" bindtap="tolink" data-link="/pages/wallet/wallet">
-                    <view class="list-main">
-                        <view class="list-icon">
-                            <view class="myIconfont wallet-icon userIcon"></view>
-                        </view>
-                        <text class="list-title">我的钱包</text>
+        <view class="list-warp">
+            <view class="list-box arrow" bindtap="tolink" data-link="/pages/wallet/wallet">
+                <view class="list-main">
+                    <view class="list-icon">
+                        <view class="myIconfont wallet-icon userIcon"></view>
                     </view>
+                    <text class="list-title">我的钱包</text>
                 </view>
-                <view class="list-box arrow" bindtap="tolink" data-link="/pages/myCard/myCard">
+            </view>
+            <!-- <view class="list-box arrow" bindtap="tolink" data-link="/pages/myCard/myCard">
                     <view class="list-main">
                         <view class="list-icon">
                             <view class="myIconfont cardRoll-icon userIcon"></view>
                         </view>
                         <text class="list-title">我的卡卷</text>
                     </view>
-                </view>
-                <view class="list-box arrow" bindtap="tolink" data-link="/pages/malfunction/malfunction">
-                    <view class="list-main">
-                        <view class="list-icon">
-                            <view class="myIconfont service-icon userIcon"></view>   
-                        </view>
-                        <text class="list-title">车辆故障</text>
+                </view> -->
+            <view class="list-box arrow" bindtap="tolink" data-link="/pages/malfunction/malfunction">
+                <view class="list-main">
+                    <view class="list-icon">
+                        <view class="myIconfont service-icon userIcon"></view>
                     </view>
-                    <view class="list-right ">
-                        车辆故障维修
-                    </view>
+                    <text class="list-title">故障反馈</text>
                 </view>
-                <view class="list-box arrow" bindtap="tolink" data-link="/pages/billDetail/billDetail">
-                    <view class="list-main">
-                        <view class="list-icon">
-                            <view class="myIconfont billDetail-icon userIcon"></view>   
-                        </view>
-                        <text class="list-title">消费明细</text>
+            </view>
+            <view class="list-box arrow" bindtap="tolink" data-link="/pages/billDetail/billDetail">
+                <view class="list-main">
+                    <view class="list-icon">
+                        <view class="myIconfont billDetail-icon userIcon"></view>
                     </view>
+                    <text class="list-title">消费明细</text>
                 </view>
+            </view>
         </view>
 
-        <view class="list-warp" >
-                <view class="list-box arrow" bindtap="tolink">
+        <view class="list-warp">
+            <view class="list-box arrow" bindtap="tolink">
+                <view class="list-main">
+                    <view class="list-icon">
+                        <view class="myIconfont  customer-icon userIcon"></view>
+                    </view>
+                    <text class="list-title">客服</text>
+                </view>
+            </view>
+            <view class="list-box arrow" bindtap="tolink" data-link="/pages/aboutUs/aboutUs">
+                <view class="list-main">
+                    <view class="list-icon">
+                        <view class="myIconfont  aboutUs-icon userIcon"></view>
+                    </view>
+                    <text class="list-title">关于我们</text>
+                </view>
+            </view>
+            <view class="list-box arrow" bindtap="tolink" data-link="/pages/Feedback/Feedback">
+                <view class="list-main">
+                    <view class="list-icon">
+                        <view class="myIconfont  feedBack--icon userIcon"></view>
+                    </view>
+                    <text class="list-title">意见反馈</text>
+                </view>
+            </view>
+
+        </view>
+        <view class="list-warp">
+            <block wx:if="{{showTestHtml}}">
+                <view class="list-box arrow" bindtap="tolink" data-link="/pages/test/test">
                     <view class="list-main">
                         <view class="list-icon">
-                            <view class="myIconfont  customer-icon userIcon"></view>     
+                            <view class="myIconfont  aboutUs-icon userIcon"></view>
                         </view>
-                        <text class="list-title">客户</text>
+                        <text class="list-title">测试页面</text>
                     </view>
                 </view>
-                <view class="list-box arrow" bindtap="tolink" data-link="/pages/aboutUs/aboutUs">
-                    <view class="list-main">
-                        <view class="list-icon">
-                            <view class="myIconfont  aboutUs-icon userIcon"></view>        
-                        </view>
-                        <text class="list-title">关于我们</text>
-                    </view>
-                </view>
+            </block>
         </view>
     </view>
 </view>
-    

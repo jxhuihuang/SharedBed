@@ -1,4 +1,4 @@
-import { formatNumber, loginType, showToast, showLoading, hideLoading } from "../../utils/util";
+import { formatNumber, loginType, showToast, showLoading, hideLoading, getSetting } from "../../utils/util";
 const app = getApp();
 const $this = this;
 Page({
@@ -73,25 +73,25 @@ Page({
             noticeIcon: "", // "../../imgs/noticebar_msg.png",
             infoType: "",
 
-            noticeText: "畅骑一夏，月卡低至一折，限量发售"
+            noticeText: "畅快一夏，月卡低至一折，限量发售"
         },
         activityIcon: { //活动图标
-            showActivity: true,
+            showActivity: false,
             redirecturl: "",
             showType: "topBanner", //blueBar  topBanner
             iconPath: "../../imgs/map_icon_rpyc.png"
         },
         topActivity: { //活动
-            showActivity: true,
+            showActivity: false,
             redirecturl: "",
-            title: "畅骑一夏，限量发售",
+            title: "畅快一夏，月卡低至一折",
             showType: "topBanner", //blueBar  topBanner
             iconPath: "../../imgs/deposit_withdraw_modal_1.png", //imgs/deposit_withdraw_modal_1.png
             redirecturl: "/pages/purchaseCard/purchaseCard",
         },
         coverGroups: {
             usecar: {
-                name: "扫描用车",
+                name: "扫描用床",
                 redirecturl: "/pages/unlock/unlock"
             },
             position: {
@@ -127,42 +127,17 @@ Page({
     onLoad: function (option) {
         const $this = this;
     },
-
-    initMaps: function (callBack) {
-        callBack = callBack ? callBack : function () { };
-        const $this = this;
-        $this.userLocation().then((res) => {
-            const positions = {
-                latitude: res.latitude,
-                longitude: res.longitude
-            }
-            console.log('positions', positions);
-            $this.setData({
-                position: positions,
-                showMap: true,
-                scale: this.data.scale,
-            }, function () {
-                callBack(positions)
-                hideLoading()
-            })
-        }).catch((erro) => {
-            $this.setData({
-                showMap: true,
-                modelShow: true
-            })
-            hideLoading()
-        });
-    },
     onShow: function () {
-        let userInfo=app.globalData.userInfo;
-        console.log('userInfo',userInfo);
+        let userInfo=wx.getStorageSync('userInfo') || {};  //app.globalData.userInfo;
+        // console.log('userInfo',userInfo);
         const $this = this;
         this.initMaps((positions) => {
             this.markertap();
             if (this.data.isFirstRun) {
                 loginType().then((data) =>{
                     hideLoading()
-                }).catch((t) => {
+                }).catch((erro) => {
+                    console.log('erro',request);
                     hideLoading()
                 })
             }
@@ -175,34 +150,51 @@ Page({
             modelShow: false
         })
     },
+    onUnload:function(){
+        this.setData({
+            isFirstRun: false,
+            modelShow: false
+        })
+    },
     onReady:function(){
         let mapId = this.data.mapId;
         this.mapCtx = wx.createMapContext(mapId)
-    },
-    userLocation: function () {
-        const p = new Promise(function (resolve, reject) {
-            wx.getSetting({
-                success: res => {
-                    if (res.authSetting['scope.userLocation'] === false) {
-                        reject("erro");
-                    } else {
-                        wx.getLocation({
-                            type: 'gcj02',
-                            success(res) {
-                                resolve(res)
-                            },
-                            fail: (res) => {
-                                reject("erro");
-                            }
-                        })
+    },/***初始化地图 */
+    initMaps: function (callBack) {
+        callBack = callBack ? callBack : function () { };
+        const $this = this;
+        this.setData({
+            showMap: true,
+        })
+        getSetting('scope.userLocation').then((res)=>{ //获取位置权限
+            // console.log('authSetting',res);
+            let permission=res.permission;
+            if(!permission){
+                $this.setData({
+                    modelShow: true
+                })
+                return false;
+            }
+            wx.getLocation({ //获取用户定位
+                type: 'gcj02',
+                success(res) {
+                    const positions = {
+                        latitude: res.latitude,
+                        longitude: res.longitude
                     }
+                    $this.setData({
+                        position: positions,
+                        scale: $this.data.scale,
+                    }, function () {
+                        hideLoading()
+                    })
                 },
-                fail: (res) => {
-                    reject("erro");
+                fail: (error) => {
+                    console.log('获取定位失败：', error);
+                    hideLoading()
                 }
             })
         })
-        return p
     },
     ofoDispatch: function (e) {
         var $this = this;

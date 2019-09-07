@@ -1,4 +1,4 @@
-import {navigateBack, showToast, showLoading, hideLoading, portUrls} from "../../utils/util";
+import {navigateBack, showToast, showLoading, hideLoading, portUrls, ajaxFns} from "../../utils/util";
 let app = getApp()
 const globalDatas=app.globalData;
 Page({
@@ -25,13 +25,13 @@ Page({
         showuserPhoneModal:false,
         confirmModalData:{
             icon:null,
-            title:"小单车申请使用你的手机号码",
+            title:app.globalData.programName+"申请使用你的手机号码",
             bindtap:"openSetting",
             confirmBtn:"确定",
             open_type:"getPhoneNumber",
         },
         phoneCaptcha:{
-            isShow:true,
+            isShow:false,
             codeIndex:[],
             code:[]
         }
@@ -71,7 +71,7 @@ Page({
         }
         if(e.detail.userInfo){
             let code=this.data.code;
-            let wxuserInfo=e.detail.userInfo;
+            let wxuserInfo=e.detail.userInfo || {};
             let iv=e.detail.iv;
             let encryptedData=e.detail.encryptedData;
             let userSecret={
@@ -79,9 +79,7 @@ Page({
                 encryptedData:encryptedData
             }
             wxuserInfo.userSecret=userSecret;
-            // let global_userInfo=app.globalData.userInfo || {};
-            // global_userInfo.wxInfo=wxuserInfo;
-            // app.globalData.wxUserInfo=global_userInfo;
+            wxuserInfo.code=code;
             this.setData({
                 showuserPhoneModal:true,
                 userInfo:{wxuserInfo:wxuserInfo}
@@ -123,11 +121,6 @@ Page({
         },()=>{
             if(globalDatas.isajax){
                 this.loginAjax().then((res)=>{
-                    let resData=res.data;
-                    userInfo.accessToken=resData.access_token || "";
-                    userInfo.refreshToken=resData.refresh_token || "";
-                    app.globalData.userInfo =userInfo;
-                    // wx.setStorageSync('userInfo', userInfo);
                     navigateBack() //返回
                 }).catch((erro) => {
                     console.log('erro',erro);
@@ -143,89 +136,31 @@ Page({
         var $this=this
         let p = new Promise(function(resolve,reject){
             let code=$this.data.code;
-            let wxuserInfo=$this.data.userInfo.wxuserInfo;
-            wx.request({
+            let userInfo=$this.data.userInfo;
+            let wxuserInfo=userInfo.wxuserInfo || {};
+            ajaxFns({
                 method:"POST",
-                url: portUrls.login,
                 data:{
                     code:code,
                     userInfo:wxuserInfo.userSecret,
                     phoneNumber:wxuserInfo.phoneSecret,
                 },
+                erroText:"登录失败",
                 success(res) {
-                    if(!res.data){
-                        showToast("登录失败");
-                        $this.wxlogin();
-                        return false;
-                    }
-                    const resData=res.data;
-                    if(res && resData.state==1){
-                        resolve(res.data)
-                    }else{
-                        showToast("登录失败");
-                        $this.wxlogin();
-                    }
-                }
-            })
-        })
-        return p;
-    },/****手机号登录 */
-    phoneLogin:function(){
-        var $this=this
-        let p = new Promise(function(resolve,reject){
-            let userInfo=$this.data.userInfo;
-            wx.request({
-                method:"POST",
-                url: portUrls.phoneLogin,
-                data:{
-                    phoneNumber:"",
-                    verificationCode:"",
+                    const resData = res.data?res.data:{};
+                    userInfo.accessToken=resData.access_token || "";
+                    userInfo.refreshToken=resData.refresh_token || "";
+                    app.globalData.userInfo=userInfo;
+                    wx.setStorageSync('userInfo', userInfo);
+                    resolve(res.data)
                 },
-                success(res) {
-                    if(!res.data){
-                        showToast("登录失败，请重新登录");
-                        return false;
-                    }
-                    const resData=res.data;
-                    if(res && resData.state==1){
-                        resolve(res.data)
-                    }else{
-                        showToast("登录失败，请重新登录");
-                    }
+                fail(erro){
+                    // console.log('login_erro：', erro);
+                    $this.wxlogin();
                 }
-            })
-        })
-        return p;
-    },/****发送验证码 */
-    setcode:function(){
-        var $this=this
-        let p = new Promise(function(resolve,reject){
-            let userInfo=$this.data.userInfo;
-            wx.request({
-                method:"POST",
-                url: portUrls.setCode,
-                data:{
-                    phoneNumber:'15907099513',
-                    verificationCode:"login",
-                },
-                header: {
-                    // 'Authorization': 'Bearer ' + userInfo.access_toke
-                },
-                success(res) {
-                    if(!res.data){
-                        showToast("获取验证码失败");
-                        return false;
-                    }
-                    const resData=res.data;
-                    if(res && resData.state==1){
-                        resolve(res.data)
-                    }else{
-                        showToast("验证码失败");
-                    }
-                }
-            })
-        })
-        return p;
 
-    }
+            },portUrls.login)
+        })
+        return p;
+    },
 })

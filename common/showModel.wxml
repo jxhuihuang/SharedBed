@@ -1,5 +1,5 @@
 
-<template name="alertModals" >
+<template name="showModel" >
     <view class="modal-container">
         <view bindtap="closeModal" class="modal-background"></view>
         <view class="modal-content v-layout vh-center " style="align-items: center; width: 560rpx;">

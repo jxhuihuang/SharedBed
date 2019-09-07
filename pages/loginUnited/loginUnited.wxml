@@ -7,9 +7,9 @@
 				{{channelLoginBtn.text}}
 			</button>
         </view>
-        <view bindtap="ofoDispatch" class="phone-login" data-evtobj="{{phoneLoginBtn}}">
+        <!-- <view bindtap="ofoDispatch" class="phone-login" data-evtobj="{{phoneLoginBtn}}">
 			{{phoneLoginBtn.text}}
-		</view>
+		</view> -->
     </view>
     <view style="padding:44rpx" wx:else>
         <view class="v-layout banner-text">
@@ -76,4 +76,4 @@
         </view>
     </view>
 </view>
-<template is="alertModals" data="{{...confirmModalData}}" wx:if="{{showuserPhoneModal}}"></template>
+<template is="showModel" data="{{...confirmModalData}}" wx:if="{{showuserPhoneModal}}"></template>

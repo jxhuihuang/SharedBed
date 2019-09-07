@@ -31,7 +31,7 @@
                 </cover-view>
                 <cover-view class="map-cover usecar usecar-box" bindtap="ofoDispatch"  data-itemtype="map-cover"  data-evtobj="usecar"  wx:if="{{showMap}}">
                     <cover-image src="/imgs/scancode_white.png" class="usecar-icons"></cover-image>
-                    <cover-view class="usecar-text">扫码用车</cover-view>
+                    <cover-view class="usecar-text">{{coverGroups.usecar.name}}</cover-view>
                 </cover-view>
                 <cover-view class="map-cover wallets" bindtap="ofoDispatch" data-itemtype="map-cover" data-evtobj="wallet" wx:if="{{showMap}}">
                     <cover-image  class="wallets-icons"    src="/imgs/kajuan.png" ></cover-image>

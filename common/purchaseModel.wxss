@@ -1,0 +1,146 @@
+.purchaseModel .modal-content{
+    height: 100vh;
+    width:100vw;
+}
+.main{
+    height: 100vh;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box; /* Firefox */
+    -webkit-box-sizing:border-box; /* Safari */
+    padding: 40rpx ;
+}
+.card_head{
+    display: flex;
+    min-height:100rpx;
+
+}
+.card_info{
+    width: 70%;
+}
+.card_name{
+    font-size: 44rpx;
+}
+.card_des{
+    font-size: 28rpx;
+    color: #888;
+    margin-top: 20rpx;
+}
+.card-img{
+    width: 30%;
+}
+
+.card-list{
+    margin-top: 40rpx;
+}
+
+.list-box{
+    border: 2px solid #EDEDED;
+    border-radius: 6px;
+    min-height: 110rpx;
+}
+.list-box.current{
+    border: 2px solid #fe5a23;
+}
+.list-main{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20rpx;
+}
+
+.list-main .names{
+    
+}
+.list-main .title{
+    font-size: 36rpx;
+    font-family: PingFangSC-Regular;
+    font-weight: 600;
+}
+.list-main .des{
+    color: #888;
+    font-size: 26rpx;
+    margin-top: 20rpx;
+}
+
+.list-main .label{
+    background: #fe5a23;
+    font-size: 24rpx;
+    height: 40rpx;
+    color: #FFF;
+    padding: 0 18rpx;
+    border-radius: 20rpx;
+    margin-left: 16rpx;
+
+}
+.list-right{
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    /* align-items: flex-start; */
+    padding: 20rpx;
+}
+.list-right .price{
+    font-size: 36rpx;
+    color: #333;
+    width:100%;
+    text-align: right;
+}
+.list-right .original_rice{
+    margin-top: 10rpx;
+    text-decoration:line-through;
+    width:100%;
+    text-align: right;
+
+}
+
+.card-des-mian{
+    margin-top: 100rpx;
+}
+
+.card-des-title{
+    font-size: 32rpx;
+    height: 80rpx;
+
+}
+
+.card-des-content{
+    line-height: 2;
+    font-size: 28rpx;
+}
+.main.margin_footer .card-des-mian{
+    margin-bottom :200rpx
+}
+.footer{
+    position: fixed;
+    width: 100%;
+    height: 160rpx;
+    background: #FFF;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 1px 1px 5px 2px #EDEDED;
+    
+}
+
+
+
+.footer > view{
+    margin: 0 40rpx;
+}
+
+.confirm-btn{
+    width: 260rpx;
+    border: 1px solid #EDEDED;
+    height: 80rpx;
+    background: #333;
+    color: #FFF;
+    border-radius: 40rpx;
+    font-size: 28rpx;
+}
+
+.footer .price{
+    font-size: 44rpx;
+}

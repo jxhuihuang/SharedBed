@@ -16,7 +16,9 @@
         "pages/myOrder/myOrder",
         "pages/activity/activity",
         "pages/billDetail/billDetail",
-
+        "pages/Feedback/Feedback",
+        "pages/test/test",
+        
         "pages/logs/logs"
     ],
     "permission": {

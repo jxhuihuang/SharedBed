@@ -1,5 +1,6 @@
 // pages/wallet/wallet.js
-import {portUrls, showToast} from "../../utils/util";
+import {portUrls, showToast, ajaxFns } from "../../utils/util";
+const app = getApp();
 Page({
 
     /**
@@ -11,9 +12,9 @@ Page({
             redirecturl:"",
         },/***套餐 */
         package:{
-            title:"单车骑行套餐",
+            title:app.globalData.programName+"套餐",
             des:"限时优惠进行中",
-            summary:"骑行更划算",
+            summary:"更划算",
             buttonShow:true,
             button_text:"购买",
             redirecturl:"/pages/purchaseCard/purchaseCard",
@@ -49,10 +50,8 @@ Page({
                 this.setData({
                     balance:resData.balance,
                     point:resData.point,
-
                 })
             }
-            
         });
     },
 
@@ -101,20 +100,14 @@ Page({
     getInfo:function(){
         let userInfo = wx.getStorageSync('userInfo') || {};
         const p = new Promise(function (resolve, reject) {
-            wx.request({
-                url: portUrls.account,
+            ajaxFns({
                 header: {
-                    'Authorization': 'Bearer ' + userInfo.access_token
+                    'Authorization': 'Bearer ' + userInfo.accessToken
                 },
                 success(res) {
-                    if(res.data){
-                        resolve(res.data)
-                    }else{
-                        showToast("获取信息失败")
-                    }
+                    resolve(res)
                 }
-            })
-
+            },portUrls.account)
         })
         return p;
 
