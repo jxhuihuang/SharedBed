@@ -7,17 +7,20 @@
                 <view class="list-box order-box"  data-link="">
                     <view class="list-header">订单编号：{{item.number}}</view>
                     <view class="list-main">
-                        <text class="myicon time-icon"></text>
-                        <text class="list-title">使用 {{item.userTime}}分钟</text>
+                        <text class="list-title">费用：{{item.amount}}</text>
                     </view>
                     <view class="list-right ">
-                        {{item.amount}} 元
+                        超时费用：{{item.timeout_amount}} 元
                     </view>
                     <view class="list-footer">
-                        <view>{{item.state}}</view>
+                        <view>{{orderStates[item.state]}}</view>
                         <view class="created_at">{{item.created_at}}</view>
                     </view>
+                   
                 </view>
         </block>
     </view>
+    <block wx:if="{{showLoadMore}}">
+        <view class="showLoadMore">{{showLoadMoreText}}</view>
+    </block>
 </view>

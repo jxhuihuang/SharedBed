@@ -1,5 +1,5 @@
 
-import { portUrls, showToast, ajaxFns, timetransform } from "../../utils/util";
+import { portUrls, showToast, ajaxFns, timetransform, hexCharCodeToStr,DateFormat } from "../../utils/util";
 const app = getApp();
 
 Page({
@@ -31,9 +31,17 @@ Page({
      */
     onShow: function () {
         const accountInfo = wx.getAccountInfoSync(); //获取小程序appid
-        this.getDict() 
-        let times=3001
+        // this.getDict() 
+        let times="3600"
         console.log('时间转换：'+times+"秒：",timetransform(times));
+        let newOder_id=times.toString();
+        newOder_id=newOder_id.padStart(10, '0') // 'xxx';
+        let arry1=[1,2,3,4]
+        let arry2=[5,6,7,8]
+        let date="2019-09-12T08:02:08"
+        console.log('DateFormat：',DateFormat(date));
+        
+        console.log('arrys:',[...arry1, ...arry2]);
         
         // wx.getSystemInfo({
         //     success(res) {
@@ -48,42 +56,30 @@ Page({
         //     }
         // })
     },
+     /** 创建订单*/
     /**
     * 获取字典信息
     */
     getDict: function () {
         let userInfo = wx.getStorageSync('userInfo') || {};
         ajaxFns({
-            data: {
-                code: 'purchase',
+            method: "POST",
+            data:{
+                purchaseId: 2,
+                number:123
             },
             header: {
-                'Authorization': 'Bearer ' + userInfo.accessToken,
+                'Authorization': 'Bearer ' + userInfo.accessToken
             },
             success(res) {
-                console.log('getDict_res：', res);
-                let resData=res.data;
-                let purchaseList=[];
-                if(resData.children){
-                    resData.children.map((obj)=>{
-                        let newObj={};
-                        let name=obj.name;
-                        let sub=name.split(",")
-                        let price=sub[0];
-                        let time=sub[1]
-                        let title=timetransform(time)
-                        purchaseList.push({
-                            id:obj.id,
-                            price:price,
-                            time:time,
-                            title:title,
-                        })
-                    })
-                    console.log('purchaseList:',purchaseList);
-                    
-                }
+               
             }
-        }, portUrls.dict)
+        },portUrls.order)
     },
+    createOrder:function(){
+        wx.navigateTo({
+            url: "/pages/map/map",
+        })
+    }
    
 })

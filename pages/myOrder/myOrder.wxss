@@ -32,10 +32,13 @@
     color: #888;
     font-size: 28rpx;
 }
-.list-right{
+.list-title{
     font-size: 30rpx;
     color: #333;
-
+}
+.list-right{
+    font-size: 28rpx;
+    color: #888;
 }
 .list-footer{
     width: 100%;
@@ -58,3 +61,4 @@
 .created_at{
     font-size: 26rpx;
 }
+

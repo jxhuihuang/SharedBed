@@ -13,15 +13,15 @@
                     </view>
                 </view>
                 <view class="card-list">
-                    <view class=" {{selectPrice==item.price?'list-box mgb_4 current':'list-box mgb_4'}}"
-                        bindtap="selectCard" data-price="{{item.price}}" wx:for="{{list}}"
+                    <view class=" {{selectPurchase.id==item.id?'list-box mgb_4 current':'list-box mgb_4'}}"
+                        bindtap="selectCard" data-id="{{item.id}}" wx:for="{{list}}"
                         wx:key="cardInfo_{{index}}">
                         <view class="list-main">
                             <view class="names">
-                                <text class="title">{{item.title}}</text> <text class="label"
-                                    wx:if="{{item.discount!=''?true:false}}">{{item.discount}}</text>
+                                <text class="title">{{item.title}}</text> 
+                                <text class="label" wx:if="{{item.discount && item.discount!=''}}">{{item.discount}}</text>
                             </view>
-                            <view class="des">
+                            <view class="des"  wx:if="{{item.des && item.des!=''}}">
                                 {{item.des}}
                             </view>
                         </view>
@@ -46,13 +46,16 @@
                 </view>
             </view>
 
-            <view class="footer" wx:if="{{footerShow}}">
-                <view><text class="price">{{selectPrice}}</text>元</view>
-                <view>
-                    <button bindtap="ofoDispatch" class="confirm-btn">
-                        提交
-                    </button>
+            <view class="footer box" wx:if="{{selectPurchase.id}}">  <!--         -->
+                <view class="footer-main ">
+                    <view class="priceMain"><text class="price">{{selectPurchase.price}}</text>元</view>
+                    <view class="price-btn">
+                        <button bindtap="ajaxPurchase" class="confirm-btn">
+                            提交
+                        </button>
+                    </view>
                 </view>
+                
             </view>
         </view>
     </view>

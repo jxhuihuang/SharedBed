@@ -1,5 +1,5 @@
 // pages/recharge/recharge.js
-import {showToast} from "../../utils/util";
+import {showToast, ajaxFns, portUrls } from "../../utils/util";
 Page({
 
     /**
@@ -40,6 +40,19 @@ Page({
      */
     onShow: function () {
         let rechargeData=this.data.rechargeData;
+        this.getInfo().then((res)=>{
+            const resData=res.data;
+            let balance=resData.balance || 0;
+            let point=resData.point || 0;
+            this.setData({
+                balance:balance,
+                point:point,
+            })
+        }).catch((erro)=>{
+            console.log("获取数据失败：", erro);
+            
+           showToast("获取数据失败："+erro);
+        })
         this.setData({
             seletAmount:rechargeData[rechargeData.length-1].amount?rechargeData[rechargeData.length-1].amount:"0"
         })
@@ -75,5 +88,26 @@ Page({
                 url: href,
             })
         }
+    },/***获取账户信息 */
+    getInfo:function(){
+        let userInfo = wx.getStorageSync('userInfo') || {};
+        const p = new Promise(function (resolve, reject) {
+            ajaxFns({
+                header: {
+                    'Authorization': 'Bearer ' + userInfo.accessToken
+                },
+                success(res) {
+                    if(!res.data){
+                        reject("数据不存在");
+                        return false;
+                    }
+                    resolve(res)
+                },
+                fail(error){
+                    reject(error)
+                }
+            },portUrls.account)
+        })
+        return p;
     }
 })

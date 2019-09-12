@@ -801,3 +801,12 @@ image {
 .blod{
     font-weight: 600;
 }
+
+
+.showLoadMore{
+    height: 120rpx;
+    line-height: 120rpx;
+    text-align: center;
+    font-size: 28rpx;
+    color: #888;
+}

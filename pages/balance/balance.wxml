@@ -6,7 +6,7 @@
             账户余额
         </view>
         <view class="balances">
-            <text>1.00 元</text>
+            <text>{{balance}}元</text>
         </view>
         <view class="btn-content">
             <button bindtap="tolink" class="recharge-btn" data-link="/pages/recharge/recharge">

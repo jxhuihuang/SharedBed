@@ -1,4 +1,4 @@
-import { portUrls, showToast, ajaxFns } from "../../utils/util";
+import { portUrls, showToast, ajaxFns, DateFormat} from "../../utils/util";
 const app = getApp();
 Page({
 
@@ -6,128 +6,13 @@ Page({
      * 页面的初始数据
      */
     data: {
-        orderList: [
-            {
-                id:1,
-                number:"78899",
-                amount: "0",
-                timeout_amount:"10",
-                created_at: "2019-08-24",
-                userTime: "8分57秒",
-                state: "已完成",
-            }, {
-                id:1,
-                number:"78899",
-                amount: "0",
-                timeout_amount:"10",
-                created_at: "2019-08-24",
-                userTime: "8分57秒",
-                state: "已完成",
-            }, {
-                id:1,
-                number:"78899",
-                amount: "0",
-                timeout_amount:"10",
-                created_at: "2019-08-24",
-                userTime: "8分57秒",
-                state: "已完成",
-            }, {
-                id:1,
-                number:"78899",
-                amount: "0",
-                timeout_amount:"10",
-                created_at: "2019-08-24",
-                userTime: "8分57秒",
-                state: "已完成",
-            }, {
-                id:1,
-                number:"78899",
-                amount: "0",
-                timeout_amount:"10",
-                created_at: "2019-08-24",
-                userTime: "8分57秒",
-                state: "已完成",
-            }, {
-                id:1,
-                number:"78899",
-                amount: "0",
-                timeout_amount:"10",
-                created_at: "2019-08-24",
-                userTime: "8分57秒",
-                state: "已完成",
-            }, {
-                id:1,
-                number:"78899",
-                amount: "0",
-                timeout_amount:"10",
-                created_at: "2019-08-24",
-                userTime: "8分57秒",
-                state: "已完成",
-            }, {
-                id:1,
-                number:"78899",
-                amount: "0",
-                timeout_amount:"10",
-                created_at: "2019-08-24",
-                userTime: "8分57秒",
-                state: "已完成",
-            }, {
-                dateTime: "2019-08-24",
-                userTime: "8分57秒",
-                spendAmount: "0",
-                state: "已完成",
-            }, {
-                dateTime: "2019-08-24",
-                userTime: "8分57秒",
-                spendAmount: "0",
-                state: "已完成",
-            }, {
-                dateTime: "2019-08-24",
-                userTime: "8分57秒",
-                spendAmount: "0",
-                state: "已完成",
-            }, {
-                dateTime: "2019-08-24",
-                userTime: "8分57秒",
-                spendAmount: "0",
-                state: "已完成",
-            }, {
-                dateTime: "2019-08-24",
-                userTime: "8分57秒",
-                spendAmount: "0",
-                state: "已完成",
-            }, {
-                dateTime: "2019-08-24",
-                userTime: "8分57秒",
-                spendAmount: "0",
-                state: "已完成",
-            }, {
-                dateTime: "2019-08-24",
-                userTime: "8分57秒",
-                spendAmount: "0",
-                state: "已完成",
-            }, {
-                dateTime: "2019-08-24",
-                userTime: "8分57秒",
-                spendAmount: "0",
-                state: "已完成",
-            }, {
-                dateTime: "2019-08-24",
-                userTime: "8分57秒",
-                spendAmount: "0",
-                state: "已完成",
-            }, {
-                dateTime: "2019-08-24",
-                userTime: "8分57秒",
-                spendAmount: "0",
-                state: "已完成",
-            }, {
-                dateTime: "2019-08-24",
-                userTime: "8分57秒",
-                spendAmount: "0",
-                state: "已完成",
-            },
-        ]
+        orderList: [], //列表
+        orderStates:["使用中","交易成功","交易取消","已超时","已退超时费用"],
+        page:1,
+        perPage:10,
+        showLoadMore:false, //是否显示加载更多
+        showLoadMoreText:"正在加载...",
+        pageCount:0,  //总页数
     },
 
     /**
@@ -149,8 +34,18 @@ Page({
      */
     onShow: function () {
         this.getorderList().then((res)=>{
+            let resData=res.data;
+            let orders=resData.orders || []
+            let pageCount=resData.pages || 0;
+            this.setData({
+                orderList:orders,
+                pageCount:pageCount
+            })
             console.log('res:',res);
             
+        }).catch((erro)=>{
+            console.log('获取订单列表失败:',erro);
+            showToast("获取订单列表失败:"+erro)  
         })
     },
 
@@ -180,6 +75,55 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
+        let page=this.data.page;
+        let showLoadMore=this.data.showLoadMore;
+        let pageCount=this.data.pageCount;
+        if(!showLoadMore){
+            let nowPage=page+1;
+            console.log('nowPage：',nowPage);
+            
+            if(nowPage>pageCount){
+                this.setData({
+                    showLoadMoreText:"已经到顶了",
+                    showLoadMore:true,
+                })
+                setTimeout(() => {
+                    this.setData({
+                        showLoadMore:false,
+                    })
+                    
+                }, 1000);
+                return false;
+            }
+
+            this.setData({
+                page:page+1,
+                showLoadMore:true,
+                showLoadMoreText:"正在加载...",
+            },()=>{
+                this.getorderList().then((res)=>{
+                    let orderList=this.data.orderList;
+                    let resData=res.data;
+                    let orders=resData.orders || []
+                    orderList=[...orderList,...orders]
+                    this.setData({
+                        orderList:orderList,
+                        showLoadMore:false,
+                    })
+                    console.log('res:',res);
+                    
+                }).catch((erro)=>{
+                    console.log('获取订单列表失败:',erro);
+                    this.setData({
+                        showLoadMore:false,
+                    })
+                    showToast("获取订单列表失败:"+erro)  
+                    
+                })
+            })
+
+        }
+        
         console.log('页面上拉触底');
     },
 
@@ -195,44 +139,32 @@ Page({
             let userInfo = wx.getStorageSync('userInfo') || {};
             ajaxFns({
                 // method: "POST",
-                url: portUrls.orderList,
                 data: {
-                    page: 1,
-                    perPage: 15,
+                    page: $this.data.page,
+                    perPage: $this.data.perPage,
                 },
                 header: {
                     'Authorization': 'Bearer ' + userInfo.accessToken,
                 },
                 erroText:"获取订单列表失败",
                 success(res) {
+                    if(!res.data){
+                        reject("获取订单列表失败");
+                        return false;
+                    }
+                    let resData=res.data;
+                    let orders=resData.orders || []
+                    orders.map((obj)=>{
+                        obj.created_at=DateFormat(obj.created_at,"yyyy-MM-dd hh:mm:ss")
+                    })
+                    
                     resolve(res)
+                },
+                fail(erro){
+                    reject(erro)
                 }
-
-            },portUrls.orderList)
+            },portUrls.order)
         })
         return p;
     },
-    createOrder:function(e){
-        var $this = this
-        let p = new Promise(function (resolve, reject) {
-            let userInfo = wx.getStorageSync('userInfo') || {};
-            ajaxFns({
-                // method: "POST",
-                url: portUrls.orderList,
-                data: {
-                    purchaseId: 1,
-                    number: 15,
-                },
-                header: {
-                    'Authorization': 'Bearer ' + userInfo.accessToken,
-                },
-                erroText:"创建订单失败",
-                success(res) {
-                    resolve(res)
-                }
-
-            },portUrls.orderList)
-        })
-        return p;
-    }
 })

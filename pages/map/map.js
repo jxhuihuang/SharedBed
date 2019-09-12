@@ -169,7 +169,8 @@ Page({
         getSetting('scope.userLocation').then((res)=>{ //获取位置权限
             // console.log('authSetting',res);
             let permission=res.permission;
-            if(!permission){
+            console.log('permission',permission);
+            if(permission=="false"){
                 $this.setData({
                     modelShow: true
                 })
@@ -226,7 +227,7 @@ Page({
                             url: redirecturl,
                         })
                     }
-                    break;
+                break;
             }
         }).catch((t) => {
             hideLoading()

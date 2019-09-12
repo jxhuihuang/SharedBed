@@ -14,4 +14,7 @@
                 </view>
         </block>
     </view>
+    <block wx:if="{{showLoadMore}}">
+        <view class="showLoadMore">{{showLoadMoreText}}</view>
+    </block>
 </view>

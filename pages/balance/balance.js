@@ -1,11 +1,11 @@
-// pages/balance/balance.js
+import {showToast, ajaxFns, portUrls } from "../../utils/util";
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-
+        balance:0,
     },
 
     /**
@@ -26,7 +26,19 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
+        this.getInfo().then((res)=>{
+            const resData=res.data;
+            let balance=resData.balance || 0;
+            let point=resData.point || 0;
+            this.setData({
+                balance:balance,
+                point:point,
+            })
+        }).catch((erro)=>{
+            console.log("获取数据失败：", erro);
+            
+           showToast("获取数据失败："+erro);
+        })
     },
 
     /**
@@ -70,6 +82,27 @@ Page({
                 url: link,
             })
         }
+    },/***获取账户信息 */
+    getInfo:function(){
+        let userInfo = wx.getStorageSync('userInfo') || {};
+        const p = new Promise(function (resolve, reject) {
+            ajaxFns({
+                header: {
+                    'Authorization': 'Bearer ' + userInfo.accessToken
+                },
+                success(res) {
+                    if(!res.data){
+                        reject("数据不存在");
+                        return false;
+                    }
+                    resolve(res)
+                },
+                fail(error){
+                    reject(error)
+                }
+            },portUrls.account)
+        })
+        return p;
     }
 
 })

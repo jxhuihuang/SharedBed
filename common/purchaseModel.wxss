@@ -112,33 +112,40 @@
     margin-bottom :200rpx
 }
 .footer{
-    position: fixed;
     width: 100%;
     height: 160rpx;
     background: #FFF;
-    bottom: 0;
+    bottom: 0px;
     left: 0;
+    box-shadow: 1px 1px 5px 2px #EDEDED;
+    padding: 0 40rpx;
+}
+.footer-main{
+    width: 100%;
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+}
+.footer .priceMain{
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    box-shadow: 1px 1px 5px 2px #EDEDED;
-    
+    width: 50%
 }
-
-
-
-.footer > view{
-    margin: 0 40rpx;
+.price-btn{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    overflow: hidden;
+    width: 50%
 }
-
-.confirm-btn{
+.price-btn .confirm-btn{
     width: 260rpx;
     border: 1px solid #EDEDED;
-    height: 80rpx;
     background: #333;
     color: #FFF;
     border-radius: 40rpx;
     font-size: 28rpx;
+    margin-top: 0;
 }
 
 .footer .price{

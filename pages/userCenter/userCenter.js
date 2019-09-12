@@ -32,7 +32,11 @@ Page({
      */
     onShow: function () {
         let userInfo = wx.getStorageSync('userInfo') || {};
-        this.getUserInfo()
+        this.getUserInfo().then(()=>{
+
+        }).catch((erro)=>{
+            showToast("获取信息失败："+erro)
+        })
         // console.log('userInfo', userInfo);
     },
 
@@ -86,6 +90,9 @@ Page({
                         userInfo: userInfo,
                     })
                     resolve(res)
+                },
+                fail(erro){
+                    reject(erro)
                 }
             },portUrls.member)
         })

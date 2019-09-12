@@ -1,4 +1,4 @@
-import {portUrls, showToast, ajaxFns} from "../../utils/util";
+import {portUrls, showToast, ajaxFns,DateFormat} from "../../utils/util";
 // pages/billDetail/billDetail.js
 Page({
 
@@ -6,40 +6,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        detailList:[
-            {
-                created_at:"2019-09-01 18:08", //'创建时间',
-                mode:"recharge", //'recharge 充值/order 下单/commission 佣金/refund 退款/rebate 返利/exchange 兑换/timeout 超时',
-                amount: "52", //金额
-                point:"",// 积分,
-                active: "1"  //
-            },
-            {
-                created_at:"2019-09-01 18:08", //'创建时间',
-                mode:"order", //'recharge 充值/order 下单/commission 佣金/refund 退款/rebate 返利/exchange 兑换/timeout 超时',
-
-                amount: "67", //金额
-                point:"",// 积分,
-                active: "1"  //
-            },
-            {
-                created_at:"2019-09-01 18:08", //'创建时间',
-                mode:"commission", //'recharge 充值/order 下单/commission 佣金/refund 退款/rebate 返利/exchange 兑换/timeout 超时',
-
-                amount: "98", //金额
-                point:"",// 积分,
-                active: "1"  //
-            },
-            {
-                created_at:"2019-09-01 18:08", //'创建时间',
-                mode:"exchange", //'recharge 充值/order 下单/commission 佣金/refund 退款/rebate 返利/exchange 兑换/timeout 超时',
-
-                amount: "125", //金额
-                point:"",// 积分,
-                active: "1"  //
-            }
-
-        ],
+        detailList:[],
         modeObj:{
             recharge:"充值",
             order:"下单",
@@ -48,7 +15,12 @@ Page({
             rebate:"返利",
             exchange:"兑换",
             timeout: "超时",
-        }
+        },
+        page:1,
+        perPage:10,
+        showLoadMore:false, //是否显示加载更多
+        showLoadMoreText:"正在加载...",
+        pageCount:0,  //总页数
     },
 
     /**
@@ -70,7 +42,17 @@ Page({
      */
     onShow: function () {
         this.getInfo().then((res)=>{
+            let resData=res.data;
+            let detailList=resData.bills || []
+            let pageCount=resData.pages || 0;
+            this.setData({
+                detailList:detailList,
+                pageCount:pageCount
+            })
             console.log("deail_res",res);
+        }).catch((erro)=>{
+            console.log('获取交易明细失败:',erro);
+            showToast("获取交易明细失败:"+erro)  
         })
     },
 
@@ -99,7 +81,55 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
+        let page=this.data.page;
+        let showLoadMore=this.data.showLoadMore;
+        let pageCount=this.data.pageCount;
+        if(!showLoadMore){
+            let nowPage=page+1;
+            console.log('nowPage：',nowPage);
+            
+            if(nowPage>pageCount){
+                this.setData({
+                    showLoadMoreText:"已经到顶了",
+                    showLoadMore:true,
+                })
+                setTimeout(() => {
+                    this.setData({
+                        showLoadMore:false,
+                    })
+                    
+                }, 1000);
+                return false;
+            }
 
+            this.setData({
+                page:page+1,
+                showLoadMore:true,
+                showLoadMoreText:"正在加载...",
+            },()=>{
+                this.getInfo().then((res)=>{
+                    let detailList=this.data.detailList;
+                    let resData=res.data;
+                    let detail=resData.bills || []
+                    detailList=[...detailList,...detail]
+                    this.setData({
+                        detailList:detailList,
+                        showLoadMore:false,
+                    })
+                    console.log('res:',res);
+                    
+                }).catch((erro)=>{
+                    console.log('获取交易明细失败:',erro);
+                    this.setData({
+                        showLoadMore:false,
+                    })
+                    showToast("获取交易明细失败:"+erro)  
+                    
+                })
+            })
+
+        }
+        console.log('页面上拉触底');
     },
     getInfo: function () {
         let userInfo = wx.getStorageSync('userInfo') || {};
@@ -114,7 +144,19 @@ Page({
                 },
                 erroText:"获取交易明细失败",
                 success(res) {
+                    if(!res.data){
+                        reject("获取交易明细失败");
+                        return false;
+                    }
+                    let resData=res.data;
+                    let bills=resData.bills || []
+                    bills.map((obj)=>{
+                        obj.created_at=DateFormat(obj.created_at,"yyyy-MM-dd hh:mm:ss")
+                    })
                     resolve(res)
+                },
+                fail(erro){
+                    reject(erro)
                 }
             },portUrls.bill)
         })

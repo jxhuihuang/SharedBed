@@ -3,7 +3,6 @@
         
         "pages/map/map",
         "pages/loginUnited/loginUnited",
-        "pages/openBtCar/openBtCar",
         "pages/malfunction/malfunction",
         "pages/userCenter/userCenter",
         "pages/wallet/wallet",

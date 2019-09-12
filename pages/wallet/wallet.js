@@ -45,13 +45,14 @@ Page({
     onShow: function () {
         this.getInfo().then((res)=>{
             console.log('res',res);
-            if(res.data){
-                const resData=res.data;
-                this.setData({
-                    balance:resData.balance,
-                    point:resData.point,
-                })
-            }
+            const resData=res.data;
+            let balance=resData.balance || 0;
+            let point=resData.point || 0;
+            this.setData({
+                balance:balance,
+                point:point,
+            })
+            
         });
     },
 
@@ -105,11 +106,17 @@ Page({
                     'Authorization': 'Bearer ' + userInfo.accessToken
                 },
                 success(res) {
+                    if(!res.data){
+                        reject("数据不存在");
+                        return false;
+                    }
                     resolve(res)
+                },
+                fail(error){
+                    reject(error)
                 }
             },portUrls.account)
         })
         return p;
-
     }
 })
